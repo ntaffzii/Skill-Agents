@@ -1,0 +1,302 @@
+[
+  {
+    "id": "ship-feature",
+    "title": "Ship Feature",
+    "description": "Take a feature request from unclear intent to implemented, verified, reviewable code.",
+    "path": "workflows/ship-feature.md",
+    "recommendedSkills": [
+      "grill-with-docs",
+      "architecture-review",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "steps": [
+      {
+        "title": "Scope",
+        "goal": "Clarify behavior, non-goals, and smallest useful version.",
+        "recommendedSkills": ["grill-with-docs"]
+      },
+      {
+        "title": "Inspect",
+        "goal": "Find entry points, boundaries, and test seams.",
+        "recommendedSkills": ["architecture-review"]
+      },
+      {
+        "title": "Implement",
+        "goal": "Use red-green-refactor to make the behavior real.",
+        "recommendedSkills": ["tdd"]
+      },
+      {
+        "title": "Review",
+        "goal": "Catch regressions, edge cases, and test gaps.",
+        "recommendedSkills": ["code-review"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Summarize changes, verification, and risks.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "debug-regression",
+    "title": "Debug Regression",
+    "description": "Find and fix a regression with a clear root cause and durable verification.",
+    "path": "workflows/debug-regression.md",
+    "recommendedSkills": ["diagnose", "tdd", "code-review", "handoff"],
+    "steps": [
+      {
+        "title": "Reproduce",
+        "goal": "Capture and minimize the failure.",
+        "recommendedSkills": ["diagnose"]
+      },
+      {
+        "title": "Prove",
+        "goal": "Add a regression signal when a good seam exists.",
+        "recommendedSkills": ["tdd"]
+      },
+      {
+        "title": "Fix",
+        "goal": "Patch the root cause and remove debug instrumentation.",
+        "recommendedSkills": ["diagnose", "tdd"]
+      },
+      {
+        "title": "Review",
+        "goal": "Check edge cases, callers, and test coverage.",
+        "recommendedSkills": ["code-review"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "State root cause, fix, and verification commands.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "review-pr",
+    "title": "Review PR",
+    "description": "Review a diff for correctness, regressions, test gaps, and maintainability risks.",
+    "path": "workflows/review-pr.md",
+    "recommendedSkills": ["code-review", "architecture-review"],
+    "steps": [
+      {
+        "title": "Understand Intent",
+        "goal": "Identify the expected behavior change.",
+        "recommendedSkills": ["code-review"]
+      },
+      {
+        "title": "Inspect Diff",
+        "goal": "Trace changed paths and report findings first.",
+        "recommendedSkills": ["code-review"]
+      },
+      {
+        "title": "Check Boundaries",
+        "goal": "Review architecture only when shared design changes.",
+        "recommendedSkills": ["architecture-review"]
+      }
+    ]
+  },
+  {
+    "id": "obsidian-vault-cleanup",
+    "title": "Obsidian Vault Cleanup",
+    "description": "Organize an Obsidian vault or folder while preserving links and conventions.",
+    "path": "workflows/obsidian-vault-cleanup.md",
+    "recommendedSkills": [
+      "obsidian-vault-workflow",
+      "obsidian-markdown",
+      "obsidian-canvas"
+    ],
+    "steps": [
+      {
+        "title": "Discover",
+        "goal": "Find vault conventions before changing notes.",
+        "recommendedSkills": ["obsidian-vault-workflow"]
+      },
+      {
+        "title": "Edit Notes",
+        "goal": "Normalize metadata, links, and tags.",
+        "recommendedSkills": ["obsidian-markdown"]
+      },
+      {
+        "title": "Map",
+        "goal": "Create a canvas when visual structure helps.",
+        "recommendedSkills": ["obsidian-canvas"]
+      }
+    ]
+  },
+  {
+    "id": "create-new-skill",
+    "title": "Create New Skill",
+    "description": "Turn a repeated task into a clean, installable skill.",
+    "path": "workflows/create-new-skill.md",
+    "recommendedSkills": [
+      "skill-management",
+      "github-skill-research",
+      "grill-with-docs",
+      "handoff"
+    ],
+    "steps": [
+      {
+        "title": "Define Job",
+        "goal": "Clarify trigger, task, and boundaries.",
+        "recommendedSkills": ["grill-with-docs"]
+      },
+      {
+        "title": "Research Patterns",
+        "goal": "Compare real skill repositories and reusable workflow conventions when useful.",
+        "recommendedSkills": ["github-skill-research"]
+      },
+      {
+        "title": "Create Skill",
+        "goal": "Write focused SKILL.md metadata and workflow.",
+        "recommendedSkills": ["skill-management"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Explain usage and trigger examples.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "research-report",
+    "title": "Research Report",
+    "description": "Research a current topic, repository pattern, or project context and produce a sourced Markdown report.",
+    "path": "workflows/research-report.md",
+    "recommendedSkills": [
+      "daily-news-report",
+      "github-skill-research",
+      "project-discovery",
+      "markdown-report",
+      "handoff"
+    ],
+    "steps": [
+      {
+        "title": "Scope",
+        "goal": "Identify topic, audience, time window, source requirements, and output language.",
+        "recommendedSkills": [
+          "daily-news-report",
+          "github-skill-research",
+          "project-discovery"
+        ]
+      },
+      {
+        "title": "Gather",
+        "goal": "Collect current sources, official docs, local files, or repo examples.",
+        "recommendedSkills": [
+          "daily-news-report",
+          "github-skill-research",
+          "project-discovery"
+        ]
+      },
+      {
+        "title": "Write",
+        "goal": "Synthesize findings into a clean Markdown deliverable.",
+        "recommendedSkills": ["markdown-report"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Summarize sources, uncertainty, and next steps.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "build-mcp-tool",
+    "title": "Build MCP Tool",
+    "description": "Turn a repeated executable action into a clean MCP tool and connect it to skills and workflows.",
+    "path": "workflows/build-mcp-tool.md",
+    "recommendedSkills": [
+      "mcp-tool-management",
+      "skill-management",
+      "code-review",
+      "handoff"
+    ],
+    "steps": [
+      {
+        "title": "Classify",
+        "goal": "Decide whether the request belongs in a skill, workflow, or tool.",
+        "recommendedSkills": ["mcp-tool-management"]
+      },
+      {
+        "title": "Define Contract",
+        "goal": "Specify inputs, output shape, errors, and safety constraints.",
+        "recommendedSkills": ["mcp-tool-management"]
+      },
+      {
+        "title": "Implement",
+        "goal": "Build a narrow executable action and connect it to the registry.",
+        "recommendedSkills": ["mcp-tool-management", "skill-management"]
+      },
+      {
+        "title": "Review",
+        "goal": "Check failure behavior, unsafe inputs, and missing tests.",
+        "recommendedSkills": ["code-review"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Summarize contract, files changed, and verification.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "daily-personal-agent",
+    "title": "Daily Personal Agent",
+    "description": "Turn calendar, inbox, chat, notes, finance watch context, and memory into a clear personal daily plan.",
+    "path": "workflows/daily-personal-agent.md",
+    "recommendedSkills": ["personal-agent-workflow", "markdown-report", "automation-design", "handoff"],
+    "steps": [
+      {
+        "title": "Scope Day",
+        "goal": "Identify date, priorities, and personal/work split.",
+        "recommendedSkills": ["personal-agent-workflow"]
+      },
+      {
+        "title": "Gather Context",
+        "goal": "Inspect calendar, inbox, chat, notes, memory, and optional finance context.",
+        "recommendedSkills": ["personal-agent-workflow", "markdown-report"]
+      },
+      {
+        "title": "Plan",
+        "goal": "Create today's plan, action list, meeting prep, and drafts.",
+        "recommendedSkills": ["automation-design", "markdown-report"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Mark drafts, open loops, and user-run actions.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
+    "id": "personal-knowledge-sync",
+    "title": "Personal Knowledge Sync",
+    "description": "Move knowledge between Obsidian, Notion, local memory, and optional RAG indexes safely.",
+    "path": "workflows/personal-knowledge-sync.md",
+    "recommendedSkills": ["obsidian-notion-bridge", "obsidian-vault-workflow", "obsidian-markdown", "markdown-report", "handoff"],
+    "steps": [
+      {
+        "title": "Choose Source",
+        "goal": "Decide which system is source of truth for this sync.",
+        "recommendedSkills": ["obsidian-notion-bridge"]
+      },
+      {
+        "title": "Inspect",
+        "goal": "Read selected notes/pages and related memories.",
+        "recommendedSkills": ["obsidian-vault-workflow", "obsidian-markdown"]
+      },
+      {
+        "title": "Plan Conversion",
+        "goal": "Draft Notion payloads, Markdown files, or RAG index chunks.",
+        "recommendedSkills": ["obsidian-notion-bridge", "markdown-report"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Summarize drafts, source metadata, and manual steps.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  }
+]

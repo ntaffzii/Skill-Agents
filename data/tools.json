@@ -1,0 +1,848 @@
+[
+  {
+    "id": "filesystem",
+    "title": "Filesystem Tools",
+    "description": "Read, inspect, and search local project files.",
+    "module": "mcp-tools/tools/filesystem.py",
+    "recommendedSkills": [
+      "diagnose",
+      "code-review",
+      "architecture-review",
+      "obsidian-vault-workflow",
+      "skill-management"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "obsidian-vault-cleanup",
+      "create-new-skill"
+    ],
+    "tools": [
+      "list_files",
+      "read_file",
+      "search_files",
+      "file_info"
+    ]
+  },
+  {
+    "id": "code-editing",
+    "title": "Code Editing Tools",
+    "description": "Apply precise patches, inspect diffs, format code, and run validation commands.",
+    "module": "mcp-tools/tools/code_editing.py",
+    "recommendedSkills": [
+      "tdd",
+      "diagnose",
+      "code-review"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression"
+    ],
+    "tools": [
+      "view_file_content",
+      "write_file",
+      "edit_file_specific",
+      "inspect_diff",
+      "format_code",
+      "run_tests"
+    ]
+  },
+  {
+    "id": "validation",
+    "title": "Validation Tools",
+    "description": "Plan, check, and run allowlisted project validation commands such as tests, lint, typecheck, or build.",
+    "module": "mcp-tools/tools/validation.py",
+    "recommendedSkills": [
+      "tdd",
+      "diagnose",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "plan_validation",
+      "check_validation_command",
+      "run_validation",
+      "run_suggested_validations"
+    ]
+  },
+  {
+    "id": "user-runner",
+    "title": "User-Run Handoff Tools",
+    "description": "Create auditable PowerShell scripts and command plans for actions the user should run manually outside the agent sandbox.",
+    "module": "mcp-tools/tools/user_runner.py",
+    "recommendedSkills": [
+      "handoff",
+      "mcp-tool-management",
+      "skill-management",
+      "diagnose"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "build-mcp-tool",
+      "create-new-skill"
+    ],
+    "tools": [
+      "list_user_run_templates",
+      "plan_user_run_command",
+      "write_user_run_script",
+      "write_user_run_template",
+      "write_all_project_user_run_scripts",
+      "validate_user_run_script"
+    ]
+  },
+  {
+    "id": "git",
+    "title": "Git Tools",
+    "description": "Inspect Git repository state, diffs, branches, and recent commits without mutating the repository.",
+    "module": "mcp-tools/tools/git.py",
+    "recommendedSkills": [
+      "code-review",
+      "diagnose",
+      "architecture-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "git_status",
+      "git_diff",
+      "git_log",
+      "git_show",
+      "git_branch"
+    ]
+  },
+  {
+    "id": "git-control",
+    "title": "Git Control Tools",
+    "description": "Safely create/check out branches, stage or unstage files, and commit staged changes through allowlisted Git commands.",
+    "module": "mcp-tools/tools/git_control.py",
+    "recommendedSkills": [
+      "code-review",
+      "handoff",
+      "mcp-tool-management"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "git_create_branch",
+      "git_checkout_branch",
+      "git_stage_files",
+      "git_unstage_files",
+      "git_commit"
+    ]
+  },
+  {
+    "id": "registry",
+    "title": "Registry Tools",
+    "description": "Inspect available tools, workflow metadata, runtime capabilities, allowed roots, and tool policy.",
+    "module": "mcp-tools/tools/registry.py",
+    "recommendedSkills": [
+      "mcp-tool-management",
+      "skill-management",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "build-mcp-tool",
+      "create-new-skill",
+      "review-pr"
+    ],
+    "tools": [
+      "list_available_tools",
+      "get_tool_group",
+      "list_allowed_roots",
+      "get_tool_policy",
+      "explain_tool_policy",
+      "list_available_workflows",
+      "get_runtime_capabilities"
+    ]
+  },
+  {
+    "id": "toolsets",
+    "title": "Toolset Routing Tools",
+    "description": "List, inspect, recommend, and validate curated toolsets so agents can load the right capabilities for each job.",
+    "module": "mcp-tools/tools/toolsets.py",
+    "recommendedSkills": [
+      "mcp-tool-management",
+      "handoff",
+      "skill-management"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "build-mcp-tool",
+      "create-new-skill"
+    ],
+    "tools": [
+      "list_toolsets",
+      "get_toolset",
+      "recommend_toolsets",
+      "validate_toolsets"
+    ]
+  },
+  {
+    "id": "skill-runtime",
+    "title": "Skill Runtime Tools",
+    "description": "Index skills, recommend workflows/skills/toolsets, load selected skill or workflow files, route requests, and build compact agent context packs.",
+    "module": "mcp-tools/tools/skill_runtime.py",
+    "recommendedSkills": ["skill-management", "mcp-tool-management", "handoff", "prompt-improvement"],
+    "recommendedWorkflows": ["create-new-skill", "build-mcp-tool", "daily-personal-agent", "personal-knowledge-sync", "ship-feature"],
+    "tools": ["build_skill_index", "recommend_workflows", "recommend_skills", "load_skill", "load_workflow", "route_request", "build_agent_context"]
+  },
+  {
+    "id": "audit",
+    "title": "Audit Tools",
+    "description": "Inspect audit log events, policy denials, action counts, and recent tool activity without mutating state.",
+    "module": "mcp-tools/tools/audit.py",
+    "recommendedSkills": [
+      "mcp-tool-management",
+      "diagnose",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "build-mcp-tool",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "get_audit_log_info",
+      "read_audit_log",
+      "summarize_audit_log",
+      "find_policy_denials",
+      "find_audit_events"
+    ]
+  },
+  {
+    "id": "mcp-security-audit",
+    "title": "MCP Security Audit Tools",
+    "description": "Classify local MCP tools by risk level, find mutating tools, check policy coverage, and summarize attack surface.",
+    "module": "mcp-tools/tools/mcp_security_audit.py",
+    "recommendedSkills": [
+      "mcp-tool-management",
+      "code-review",
+      "diagnose"
+    ],
+    "recommendedWorkflows": [
+      "build-mcp-tool",
+      "review-pr",
+      "debug-regression"
+    ],
+    "tools": [
+      "audit_tool_risk_levels",
+      "find_mutating_tools",
+      "check_tool_policy_coverage",
+      "summarize_mcp_attack_surface"
+    ]
+  },
+  {
+    "id": "security-scanner",
+    "title": "Security Scanner Tools",
+    "description": "Scan repository files for likely secrets, dangerous commands, environment exposure, dependency risks, and generate security reports.",
+    "module": "mcp-tools/tools/security_scanner.py",
+    "recommendedSkills": [
+      "code-review",
+      "diagnose",
+      "mcp-tool-management"
+    ],
+    "recommendedWorkflows": [
+      "review-pr",
+      "ship-feature",
+      "debug-regression",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "scan_secrets_in_repo",
+      "scan_dangerous_commands",
+      "scan_env_exposure",
+      "scan_dependency_manifest_risks",
+      "generate_security_report"
+    ]
+  },
+  {
+    "id": "project",
+    "title": "Project Tools",
+    "description": "Inspect project stack, important files, package scripts, and lightweight health without mutating the repository.",
+    "module": "mcp-tools/tools/project.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "detect_project_stack",
+      "get_project_scripts",
+      "find_project_files",
+      "summarize_project_health"
+    ]
+  },
+  {
+    "id": "docs",
+    "title": "Documentation Tools",
+    "description": "Find documentation, read README/docs files, summarize documentation coverage, and build compact context bundles before editing.",
+    "module": "mcp-tools/tools/docs.py",
+    "recommendedSkills": [
+      "grill-with-docs",
+      "architecture-review",
+      "diagnose",
+      "code-review",
+      "skill-management",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "create-new-skill",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "find_documentation",
+      "read_documentation_file",
+      "summarize_documentation_index",
+      "build_context_bundle",
+      "find_docs_by_keyword"
+    ]
+  },
+  {
+    "id": "repo-index",
+    "title": "Repository Index Tools",
+    "description": "Build a lightweight in-memory repository index, search files by names/symbols/previews, find related files, and summarize repo shape.",
+    "module": "mcp-tools/tools/repo_index.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff",
+      "skill-management"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "create-new-skill",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "build_repo_index",
+      "search_repo_index",
+      "find_related_files",
+      "summarize_index"
+    ]
+  },
+  {
+    "id": "package",
+    "title": "Package Tools",
+    "description": "Inspect package managers, manifests, lockfiles, dependencies, and dependency health without installing or updating packages.",
+    "module": "mcp-tools/tools/package.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "detect_package_managers",
+      "read_package_manifest",
+      "list_dependencies",
+      "get_lockfile_status",
+      "summarize_dependency_health"
+    ]
+  },
+  {
+    "id": "docker",
+    "title": "Docker Tools",
+    "description": "Inspect Dockerfile and Docker Compose files, check Docker CLI availability, and plan Docker validation commands without running containers.",
+    "module": "mcp-tools/tools/docker.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "check_docker_available",
+      "find_docker_files",
+      "inspect_dockerfile",
+      "inspect_docker_compose",
+      "plan_docker_validation"
+    ]
+  },
+  {
+    "id": "api",
+    "title": "API Tools",
+    "description": "Inspect likely API route files, endpoints, OpenAPI specs, and API configuration hints without starting servers.",
+    "module": "mcp-tools/tools/api.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "find_api_files",
+      "extract_api_endpoints",
+      "find_openapi_specs",
+      "find_api_config",
+      "summarize_api_surface"
+    ]
+  },
+  {
+    "id": "database",
+    "title": "Database Tools",
+    "description": "Inspect database schema files, migrations, ORM models, and database config hints without connecting to a database.",
+    "module": "mcp-tools/tools/database.py",
+    "recommendedSkills": [
+      "architecture-review",
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "find_database_files",
+      "extract_schema_objects",
+      "find_migrations",
+      "find_database_config",
+      "summarize_database_surface"
+    ]
+  },
+  {
+    "id": "config",
+    "title": "Config Tools",
+    "description": "Inspect config files, env keys, .env examples, and secret hygiene signals with redacted values.",
+    "module": "mcp-tools/tools/config.py",
+    "recommendedSkills": ["architecture-review", "diagnose", "code-review", "handoff"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["find_config_files", "list_env_keys", "inspect_env_example", "check_secret_hygiene", "summarize_config_surface"]
+  },
+  {
+    "id": "test-inspection",
+    "title": "Test Inspection Tools",
+    "description": "Find test files, detect likely test frameworks, map source files to tests, and summarize test coverage signals without running tests.",
+    "module": "mcp-tools/tools/test_inspection.py",
+    "recommendedSkills": ["tdd", "diagnose", "code-review", "handoff"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["find_test_files", "detect_test_frameworks", "map_source_to_tests", "summarize_test_surface"]
+  },
+  {
+    "id": "ci",
+    "title": "CI Tools",
+    "description": "Find CI files, inspect GitHub Actions jobs, extract CI validation commands, and summarize CI surface.",
+    "module": "mcp-tools/tools/ci.py",
+    "recommendedSkills": ["code-review", "diagnose", "tdd", "handoff"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["find_ci_files", "inspect_github_actions_jobs", "list_ci_validation_commands", "summarize_ci_surface"]
+  },
+  {
+    "id": "task",
+    "title": "Task Tools",
+    "description": "Scan local TODO/FIXME/HACK/BUG markers and roadmap-style files.",
+    "module": "mcp-tools/tools/task.py",
+    "recommendedSkills": ["diagnose", "code-review", "handoff", "skill-management"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr", "create-new-skill"],
+    "tools": ["scan_task_markers", "find_roadmap_files", "summarize_task_markers"]
+  },
+  {
+    "id": "dependency-risk",
+    "title": "Dependency Risk Tools",
+    "description": "Inspect dependency risk signals offline from manifests without querying package registries.",
+    "module": "mcp-tools/tools/dependency_risk.py",
+    "recommendedSkills": ["architecture-review", "diagnose", "code-review"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["find_unpinned_dependencies", "find_high_risk_dependency_names", "summarize_dependency_risk"]
+  },
+  {
+    "id": "release",
+    "title": "Release Tools",
+    "description": "Inspect release files, version strings, and draft a lightweight release readiness checklist.",
+    "module": "mcp-tools/tools/release.py",
+    "recommendedSkills": ["handoff", "code-review"],
+    "recommendedWorkflows": ["review-pr", "ship-feature"],
+    "tools": ["find_release_files", "detect_versions", "draft_release_checklist"]
+  },
+  {
+    "id": "backup",
+    "title": "Backup Tools",
+    "description": "Plan, create, and list zip snapshots inside allowed roots before broad edits.",
+    "module": "mcp-tools/tools/backup.py",
+    "recommendedSkills": ["mcp-tool-management", "handoff"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "build-mcp-tool"],
+    "tools": ["plan_backup_snapshot", "create_backup_snapshot", "list_backup_snapshots"]
+  },
+  {
+    "id": "structured-data",
+    "title": "Structured Data Tools",
+    "description": "Read, validate, inspect, and patch JSON/YAML/TOML data through structured paths instead of ad hoc string editing.",
+    "module": "mcp-tools/tools/structured_data.py",
+    "recommendedSkills": ["mcp-tool-management", "skill-management", "code-review"],
+    "recommendedWorkflows": ["build-mcp-tool", "create-new-skill", "review-pr"],
+    "tools": ["read_json", "validate_json", "get_json_path", "patch_json_path", "inspect_toml", "read_yaml", "validate_yaml", "get_yaml_path"]
+  },
+  {
+    "id": "memory",
+    "title": "Memory Tools",
+    "description": "Store, list, search, and summarize local persistent memory entries for project decisions and handoffs.",
+    "module": "mcp-tools/tools/memory.py",
+    "recommendedSkills": ["handoff", "architecture-review", "skill-management"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "create-new-skill"],
+    "tools": ["save_memory", "list_memories", "search_memory", "summarize_project_memory"]
+  },
+  {
+    "id": "memory-context",
+    "title": "Memory Context Tools",
+    "description": "Save typed project decisions, preferences, bug lessons, build context packs, compact memory plans, and generate memory handoffs.",
+    "module": "mcp-tools/tools/memory_context.py",
+    "recommendedSkills": ["handoff", "architecture-review", "diagnose", "skill-management"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "create-new-skill", "build-mcp-tool"],
+    "tools": ["save_project_decision", "save_user_preference", "save_bug_lesson", "save_typed_memory", "search_project_context", "build_context_pack", "compact_old_memories", "generate_handoff_from_memory"]
+  },
+  {
+    "id": "finance-market",
+    "title": "Finance Market Tools",
+    "description": "Look up educational market quotes, crypto prices, finance-news query plans, watchlist summaries, and simple position risk calculations.",
+    "module": "mcp-tools/tools/finance_market.py",
+    "recommendedSkills": [
+      "daily-news-report",
+      "markdown-report",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "research-report"
+    ],
+    "tools": [
+      "list_finance_providers",
+      "plan_finance_lookup",
+      "get_market_quote",
+      "get_crypto_price",
+      "build_watchlist_summary",
+      "plan_finance_news_query",
+      "calculate_position_risk"
+    ]
+  },
+  {
+    "id": "github",
+    "title": "GitHub Tools",
+    "description": "Inspect local GitHub metadata, workflow files, token availability, and draft PR descriptions without calling the GitHub API.",
+    "module": "mcp-tools/tools/github.py",
+    "recommendedSkills": ["code-review", "handoff"],
+    "recommendedWorkflows": ["review-pr", "ship-feature"],
+    "tools": ["detect_github_context", "find_github_workflows", "inspect_github_actions", "draft_pr_description"]
+  },
+  {
+    "id": "github-api",
+    "title": "GitHub API Tools",
+    "description": "Optionally read GitHub repo, issue, pull request, PR files, and check run data through the GitHub API when a token is available.",
+    "module": "mcp-tools/tools/github_api.py",
+    "recommendedSkills": ["code-review", "handoff", "diagnose"],
+    "recommendedWorkflows": ["review-pr", "ship-feature", "debug-regression"],
+    "tools": ["check_github_api_auth", "get_repo_info", "get_issue", "get_pull_request", "list_pr_files", "get_pr_checks", "draft_pr_review"]
+  },
+  {
+    "id": "browser",
+    "title": "Browser Tools",
+    "description": "Inspect browser readiness, localhost URLs, static HTML files, and browser smoke-check plans.",
+    "module": "mcp-tools/tools/browser.py",
+    "recommendedSkills": ["diagnose", "code-review"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["check_browser_capabilities", "find_localhost_urls", "inspect_static_html", "plan_browser_check"]
+  },
+  {
+    "id": "playwright",
+    "title": "Playwright Tools",
+    "description": "Open pages with Playwright, inspect titles/text/console errors, capture screenshots, and plan UI smoke checks.",
+    "module": "mcp-tools/tools/playwright_tools.py",
+    "recommendedSkills": ["diagnose", "code-review", "tdd"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["check_playwright_runtime", "playwright_inspect_page", "playwright_screenshot", "playwright_smoke_plan"]
+  },
+  {
+    "id": "playwright-actions",
+    "title": "Playwright Action Tools",
+    "description": "Interact with live pages using Playwright actions such as click, fill, assert text, inspect console errors, network failures, accessibility snapshots, persistent sessions, and run UI checks.",
+    "module": "mcp-tools/tools/playwright_actions.py",
+    "recommendedSkills": ["diagnose", "code-review", "tdd"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["playwright_click", "playwright_fill", "playwright_assert_visible_text", "playwright_get_console_errors", "playwright_get_network_failures", "playwright_accessibility_snapshot", "playwright_run_ui_check", "playwright_start_session", "playwright_use_session", "playwright_list_sessions", "playwright_close_session"]
+  },
+  {
+    "id": "sandbox",
+    "title": "Sandbox Tools",
+    "description": "Create safe temporary workspaces and compile Python snippets without executing arbitrary code.",
+    "module": "mcp-tools/tools/sandbox.py",
+    "recommendedSkills": ["diagnose", "tdd", "mcp-tool-management"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "build-mcp-tool"],
+    "tools": ["check_sandbox_available", "create_temp_workspace", "compile_python_snippet", "plan_sandbox_run"]
+  },
+  {
+    "id": "prompt-improver",
+    "title": "Prompt Improver Tools",
+    "description": "Analyze, rewrite, score, and template prompts for agents and workflows.",
+    "module": "mcp-tools/tools/prompt_improver.py",
+    "recommendedSkills": [
+      "grill-with-docs",
+      "skill-management",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "create-new-skill"
+    ],
+    "tools": [
+      "analyze_prompt",
+      "improve_prompt",
+      "generate_system_prompt",
+      "score_prompt"
+    ]
+  },
+  {
+    "id": "web",
+    "title": "Web Tools",
+    "description": "Search the web, fetch URLs, extract text, and summarize sources.",
+    "module": "mcp-tools/tools/web.py",
+    "recommendedSkills": [
+      "diagnose",
+      "architecture-review",
+      "skill-management"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "create-new-skill"
+    ],
+    "tools": [
+      "search_web",
+      "fetch_url",
+      "extract_page_text",
+      "summarize_sources"
+    ]
+  },
+  {
+    "id": "web-capture",
+    "title": "Web Capture Tools",
+    "description": "Capture public webpages through provider-neutral local static, local browser, or optional Firecrawl providers; extract readable content and links with social-site safety limits.",
+    "module": "mcp-tools/tools/web_capture.py",
+    "recommendedSkills": [
+      "github-skill-research",
+      "daily-news-report",
+      "markdown-report",
+      "handoff",
+      "mcp-tool-management"
+    ],
+    "recommendedWorkflows": [
+      "research-report",
+      "create-new-skill",
+      "build-mcp-tool"
+    ],
+    "tools": [
+      "list_web_capture_providers",
+      "plan_web_capture",
+      "extract_html_content",
+      "extract_links_from_html",
+      "capture_webpage",
+      "capture_social_public_url",
+      "batch_capture_urls"
+    ]
+  },
+  {
+    "id": "media",
+    "title": "Media Tools",
+    "description": "Inspect and process image, audio, and video artifacts.",
+    "module": "mcp-tools/tools/media.py",
+    "recommendedSkills": [
+      "obsidian-markdown",
+      "obsidian-vault-workflow"
+    ],
+    "recommendedWorkflows": [
+      "obsidian-vault-cleanup"
+    ],
+    "tools": [
+      "open_website",
+      "play_and_search_youtube",
+      "play_audio_background",
+      "press_system_media_key",
+      "inspect_image",
+      "extract_video_frame",
+      "transcribe_audio",
+      "create_thumbnail"
+    ]
+  },
+  {
+    "id": "system",
+    "title": "System Tools",
+    "description": "Inspect environment, check commands, run safe validation, and report health.",
+    "module": "mcp-tools/tools/system.py",
+    "recommendedSkills": [
+      "diagnose",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "recommendedWorkflows": [
+      "ship-feature",
+      "debug-regression",
+      "review-pr"
+    ],
+    "tools": [
+      "get_environment",
+      "get_system_drives",
+      "check_command",
+      "run_command",
+      "get_current_datetime",
+      "generate_efficiency_report",
+      "health_check"
+    ]
+  },
+  {
+    "id": "external-mcp-catalog",
+    "title": "External MCP Catalog Tools",
+    "description": "Search MCP catalogs, summarize external MCP repos, compare tool patterns, and draft local adaptations.",
+    "module": "mcp-tools/tools/external_mcp_catalog.py",
+    "recommendedSkills": ["github-skill-research", "mcp-tool-management", "skill-management"],
+    "recommendedWorkflows": ["research-report", "build-mcp-tool", "create-new-skill"],
+    "tools": ["list_mcp_catalog_sources", "search_mcp_catalogs", "summarize_mcp_repo", "compare_mcp_tool_patterns", "draft_local_tool_adaptation"]
+  },
+  {
+    "id": "browser-page-map",
+    "title": "Browser Page Map Tools",
+    "description": "Create token-efficient page maps from HTML, list interactive elements, and find elements by label.",
+    "module": "mcp-tools/tools/browser_page_map.py",
+    "recommendedSkills": ["diagnose", "code-review", "tdd"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["capture_page_map_from_html", "summarize_page_structure", "list_interactive_elements", "find_element_by_label"]
+  },
+  {
+    "id": "vector-memory",
+    "title": "Vector Memory Tools",
+    "description": "Build lightweight lexical vector indexes over local memories, search related memories, and summarize clusters.",
+    "module": "mcp-tools/tools/vector_memory.py",
+    "recommendedSkills": ["handoff", "architecture-review", "diagnose", "skill-management"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "create-new-skill", "research-report"],
+    "tools": ["build_vector_memory_index", "search_vector_memory", "find_related_memories", "summarize_memory_clusters"]
+  },
+  {
+    "id": "postgres",
+    "title": "Postgres Tools",
+    "description": "Plan and run read-only Postgres queries when configured, classify SQL risk, and inspect supplied query results.",
+    "module": "mcp-tools/tools/postgres.py",
+    "recommendedSkills": ["architecture-review", "diagnose", "code-review"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "tools": ["check_postgres_config", "explain_sql_risk", "plan_readonly_query", "run_readonly_sql", "inspect_query_result"]
+  },
+  {
+    "id": "figma",
+    "title": "Figma Tools",
+    "description": "Plan Figma inspection, read file metadata when authenticated, extract simple design tokens, inspect components, and draft frontend plans.",
+    "module": "mcp-tools/tools/figma.py",
+    "recommendedSkills": ["architecture-review", "tdd", "code-review"],
+    "recommendedWorkflows": ["ship-feature", "review-pr"],
+    "tools": ["check_figma_auth", "plan_figma_inspection", "get_figma_file_summary", "extract_design_tokens", "inspect_components", "draft_frontend_implementation_plan"]
+  },
+  {
+    "id": "notion",
+    "title": "Notion Tools",
+    "description": "Check Notion auth, search/read pages when configured, and plan note/block creation payloads.",
+    "module": "mcp-tools/tools/notion.py",
+    "recommendedSkills": ["markdown-report", "handoff", "obsidian-vault-workflow"],
+    "recommendedWorkflows": ["research-report", "obsidian-vault-cleanup", "create-new-skill"],
+    "tools": ["check_notion_auth", "search_notion_pages", "read_notion_page", "create_notion_note_plan", "append_notion_block_plan"]
+  },
+  {
+    "id": "slack-discord",
+    "title": "Slack Discord Tools",
+    "description": "Check Slack/Discord auth, search Slack when configured, summarize supplied messages, draft replies, and extract action items.",
+    "module": "mcp-tools/tools/slack_discord.py",
+    "recommendedSkills": ["handoff", "markdown-report", "automation-design"],
+    "recommendedWorkflows": ["research-report", "debug-regression"],
+    "tools": ["check_chat_integrations", "search_slack_messages", "summarize_channel_messages", "draft_chat_reply", "extract_action_items"]
+  },
+  {
+    "id": "obsidian-notion-bridge",
+    "title": "Obsidian Notion Bridge Tools",
+    "description": "Inspect Obsidian notes, plan Notion payloads, plan Notion-to-Obsidian Markdown, and create safe sync checklists.",
+    "module": "mcp-tools/tools/obsidian_notion_bridge.py",
+    "recommendedSkills": ["obsidian-vault-workflow", "obsidian-markdown", "markdown-report", "handoff"],
+    "recommendedWorkflows": ["personal-knowledge-sync", "obsidian-vault-cleanup", "research-report"],
+    "tools": ["inspect_obsidian_note_for_notion", "plan_obsidian_to_notion", "plan_notion_to_obsidian", "create_knowledge_sync_checklist"]
+  },
+  {
+    "id": "issue-tracker",
+    "title": "Issue Tracker Tools",
+    "description": "Check GitHub/Linear/Jira config, parse issue references, draft issues, break down work, and plan issue updates.",
+    "module": "mcp-tools/tools/issue_tracker.py",
+    "recommendedSkills": ["handoff", "grill-with-docs", "automation-design"],
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr", "daily-personal-agent"],
+    "tools": ["check_issue_tracker_config", "parse_issue_reference", "draft_issue_from_context", "break_down_issue", "plan_issue_update"]
+  },
+  {
+    "id": "calendar",
+    "title": "Calendar Tools",
+    "description": "Check calendar config, summarize supplied events, build daily plans, draft meeting prep, and extract follow-ups.",
+    "module": "mcp-tools/tools/calendar.py",
+    "recommendedSkills": ["automation-design", "handoff", "markdown-report"],
+    "recommendedWorkflows": ["daily-personal-agent"],
+    "tools": ["check_calendar_config", "summarize_calendar_events", "build_daily_plan", "draft_meeting_prep", "extract_calendar_followups"]
+  },
+  {
+    "id": "email-inbox",
+    "title": "Email Inbox Tools",
+    "description": "Check email config, plan searches, summarize supplied messages, extract action items, and draft replies without sending.",
+    "module": "mcp-tools/tools/email_inbox.py",
+    "recommendedSkills": ["automation-design", "handoff", "markdown-report"],
+    "recommendedWorkflows": ["daily-personal-agent", "research-report"],
+    "tools": ["check_email_config", "plan_email_search", "summarize_email_messages", "extract_email_action_items", "draft_email_reply"]
+  },
+  {
+    "id": "rag-adapter",
+    "title": "RAG Adapter Tools",
+    "description": "List RAG provider patterns, check embedding config, chunk text, plan indexes, and draft embedding request payloads.",
+    "module": "mcp-tools/tools/rag_adapter.py",
+    "recommendedSkills": ["project-discovery", "handoff", "skill-management"],
+    "recommendedWorkflows": ["research-report", "personal-knowledge-sync", "create-new-skill"],
+    "tools": ["list_rag_providers", "check_rag_config", "chunk_text_for_rag", "plan_rag_index", "build_embedding_request_plan"]
+  }
+]

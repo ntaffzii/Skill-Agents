@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "profile": "local-personal-agent",
+  "notes": "Provider/model-agnostic LLM configuration for local and remote providers. Do not put real secrets here; use environment variables.",
+  "active_provider": "lm-studio",
+  "active_model": "LFM2.5-8B-A1B",
+  "providers": {
+    "lm-studio": {
+      "type": "openai-compatible",
+      "base_url": "http://localhost:1234/v1",
+      "chat_completions_url": "http://localhost:1234/v1/chat/completions",
+      "api_key_env": "LM_STUDIO_API_KEY",
+      "api_key_required": false,
+      "recommended_for": ["prompt-improver", "daily-agent", "skill-runtime", "general-local-llm"]
+    },
+    "ollama": {
+      "type": "openai-compatible",
+      "base_url": "http://localhost:11434/v1",
+      "chat_completions_url": "http://localhost:11434/v1/chat/completions",
+      "api_key_env": "OLLAMA_API_KEY",
+      "api_key_required": false,
+      "recommended_for": ["prompt-improver", "daily-agent", "local-llm"]
+    },
+    "llama-cpp": {
+      "type": "openai-compatible",
+      "base_url": "http://localhost:8080/v1",
+      "chat_completions_url": "http://localhost:8080/v1/chat/completions",
+      "api_key_env": "LLAMA_CPP_API_KEY",
+      "api_key_required": false,
+      "recommended_for": ["prompt-improver", "offline-local-llm"]
+    },
+    "vllm": {
+      "type": "openai-compatible",
+      "base_url": "http://localhost:8000/v1",
+      "chat_completions_url": "http://localhost:8000/v1/chat/completions",
+      "api_key_env": "VLLM_API_KEY",
+      "api_key_required": false,
+      "recommended_for": ["higher-throughput", "coding", "research", "rag"]
+    },
+    "openai-compatible-remote": {
+      "type": "openai-compatible",
+      "base_url": "https://api.example.com/v1",
+      "chat_completions_url": "https://api.example.com/v1/chat/completions",
+      "api_key_env": "OPENAI_COMPATIBLE_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["remote-provider", "fallback"]
+    },
+    "openai": {
+      "type": "openai",
+      "base_url": "https://api.openai.com/v1",
+      "chat_completions_url": "https://api.openai.com/v1/chat/completions",
+      "api_key_env": "OPENAI_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["coding", "reasoning", "prompt-improver", "remote-provider"]
+    },
+    "anthropic": {
+      "type": "anthropic",
+      "base_url": "https://api.anthropic.com",
+      "messages_url": "https://api.anthropic.com/v1/messages",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["long-context", "coding", "analysis", "remote-provider"],
+      "notes": "Uses Anthropic Messages API, not OpenAI-compatible chat completions."
+    },
+    "gemini": {
+      "type": "gemini",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api_key_env": "GEMINI_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["long-context", "multimodal", "general-agent", "remote-provider"],
+      "notes": "Uses Google Gemini API, not OpenAI-compatible chat completions by default."
+    },
+    "openrouter": {
+      "type": "openai-compatible",
+      "base_url": "https://openrouter.ai/api/v1",
+      "chat_completions_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["multi-provider-routing", "fallback", "remote-provider"]
+    },
+    "groq": {
+      "type": "openai-compatible",
+      "base_url": "https://api.groq.com/openai/v1",
+      "chat_completions_url": "https://api.groq.com/openai/v1/chat/completions",
+      "api_key_env": "GROQ_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["fast-inference", "routing", "summaries"]
+    },
+    "together": {
+      "type": "openai-compatible",
+      "base_url": "https://api.together.xyz/v1",
+      "chat_completions_url": "https://api.together.xyz/v1/chat/completions",
+      "api_key_env": "TOGETHER_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["open-models", "coding", "research"]
+    },
+    "fireworks": {
+      "type": "openai-compatible",
+      "base_url": "https://api.fireworks.ai/inference/v1",
+      "chat_completions_url": "https://api.fireworks.ai/inference/v1/chat/completions",
+      "api_key_env": "FIREWORKS_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["open-models", "coding", "research"]
+    },
+    "mistral": {
+      "type": "openai-compatible",
+      "base_url": "https://api.mistral.ai/v1",
+      "chat_completions_url": "https://api.mistral.ai/v1/chat/completions",
+      "api_key_env": "MISTRAL_API_KEY",
+      "api_key_required": true,
+      "recommended_for": ["coding", "summaries", "remote-provider"]
+    },
+    "custom-openai-compatible": {
+      "type": "openai-compatible",
+      "base_url": "http://localhost:9000/v1",
+      "chat_completions_url": "http://localhost:9000/v1/chat/completions",
+      "api_key_env": "CUSTOM_LLM_API_KEY",
+      "api_key_required": false,
+      "recommended_for": ["custom-provider", "local-or-remote"]
+    }
+  },
+  "models": {
+    "LFM2.5-8B-A1B": {
+      "provider": "lm-studio",
+      "role": "recommended-prompt-improver",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "top_k": 40,
+      "repeat_penalty": 1.08,
+      "notes": "Recommended starter model for prompt improvement when available."
+    },
+    "qwen2.5-coder-7b": {
+      "provider": "ollama",
+      "role": "coding-and-routing",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.15,
+      "top_p": 0.9,
+      "top_k": 40,
+      "repeat_penalty": 1.08
+    },
+    "qwen3-8b": {
+      "provider": "ollama",
+      "role": "general-agent",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "top_k": 40,
+      "repeat_penalty": 1.08
+    },
+    "llama-3.1-8b-instruct": {
+      "provider": "llama-cpp",
+      "role": "general-local-agent",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "top_k": 40,
+      "repeat_penalty": 1.08
+    },
+    "gpt-4.1-mini": {
+      "provider": "openai",
+      "role": "remote-coding-general",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9
+    },
+    "claude-sonnet": {
+      "provider": "anthropic",
+      "role": "remote-coding-analysis",
+      "context_window": 200000,
+      "max_output_tokens": 8192,
+      "temperature": 0.2,
+      "top_p": 0.9
+    },
+    "gemini-pro": {
+      "provider": "gemini",
+      "role": "remote-long-context",
+      "context_window": 1000000,
+      "max_output_tokens": 8192,
+      "temperature": 0.2,
+      "top_p": 0.9
+    },
+    "openrouter-auto": {
+      "provider": "openrouter",
+      "role": "multi-provider-fallback",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9
+    }
+  },
+  "task_presets": {
+    "skill-routing": {
+      "model": "LFM2.5-8B-A1B",
+      "context_window": 8192,
+      "max_output_tokens": 1024,
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "repeat_penalty": 1.05,
+      "tools_first": ["skill-runtime.route_request"]
+    },
+    "prompt-improver": {
+      "model": "LFM2.5-8B-A1B",
+      "context_window": 8192,
+      "max_output_tokens": 2048,
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "repeat_penalty": 1.08,
+      "tools_first": ["prompt-improver.analyze_prompt", "prompt-improver.improve_prompt"]
+    },
+    "daily-personal-agent": {
+      "model": "LFM2.5-8B-A1B",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "repeat_penalty": 1.08,
+      "toolset": "personal-daily-agent",
+      "workflow": "daily-personal-agent"
+    },
+    "coding-review": {
+      "model": "qwen2.5-coder-7b",
+      "context_window": 32768,
+      "max_output_tokens": 4096,
+      "temperature": 0.15,
+      "top_p": 0.9,
+      "repeat_penalty": 1.08,
+      "toolset": "coding-basic",
+      "workflow": "review-pr"
+    },
+    "research-rag": {
+      "model": "qwen3-8b",
+      "context_window": 65536,
+      "max_output_tokens": 8192,
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "repeat_penalty": 1.08,
+      "toolset": "personal-knowledge-rag",
+      "workflow": "research-report"
+    },
+    "remote-long-context": {
+      "model": "gemini-pro",
+      "context_window": 131072,
+      "max_output_tokens": 8192,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "toolset": "agent-control-plane",
+      "workflow": "research-report"
+    },
+    "remote-coding": {
+      "model": "claude-sonnet",
+      "context_window": 65536,
+      "max_output_tokens": 8192,
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "toolset": "coding-basic",
+      "workflow": "ship-feature"
+    }
+  },
+  "skill_runtime": {
+    "route_before_loading_skills": true,
+    "use_prompt_improver_when_unclear": true,
+    "max_selected_workflows": 3,
+    "max_selected_skills": 5,
+    "max_selected_toolsets": 3,
+    "build_agent_context_max_chars": 24000
+  },
+  "rag": {
+    "default_provider": "local-lightweight",
+    "chunk_size": 1200,
+    "overlap": 120,
+    "embedding_provider": "openai-compatible-embeddings",
+    "embedding_api_url_env": "EMBEDDINGS_API_URL",
+    "embedding_model_env": "EMBEDDINGS_MODEL",
+    "embedding_api_key_env": "EMBEDDINGS_API_KEY"
+  },
+  "mcp": {
+    "stdio_server": "mcp-tools/server.py",
+    "http_server": "mcp-tools/server_http.py",
+    "http_url": "http://127.0.0.1:8765",
+    "default_transport": "stdio",
+    "safe_default_host": "127.0.0.1"
+  },
+  "safety": {
+    "private_actions_default": "draft-only",
+    "database_default": "read-only",
+    "notion_default": "plan-only",
+    "email_default": "draft-only",
+    "chat_default": "draft-only",
+    "issue_tracker_default": "plan-only",
+    "do_not_commit_real_tokens": true
+  },
+  "env_mapping": {
+    "PROMPT_IMPROVER_API_URL": "providers.<active_provider>.chat_completions_url",
+    "PROMPT_IMPROVER_MODEL": "active_model",
+    "OPENAI_API_KEY": "providers.openai.api_key_env",
+    "ANTHROPIC_API_KEY": "providers.anthropic.api_key_env",
+    "GEMINI_API_KEY": "providers.gemini.api_key_env",
+    "OPENROUTER_API_KEY": "providers.openrouter.api_key_env",
+    "GROQ_API_KEY": "providers.groq.api_key_env",
+    "TOGETHER_API_KEY": "providers.together.api_key_env",
+    "FIREWORKS_API_KEY": "providers.fireworks.api_key_env",
+    "MISTRAL_API_KEY": "providers.mistral.api_key_env",
+    "EMBEDDINGS_API_URL": "rag embedding endpoint when configured",
+    "EMBEDDINGS_MODEL": "rag embedding model when configured"
+  }
+}

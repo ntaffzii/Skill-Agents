@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+mcp-tools/logs/
+mcp-tools/tests/scratch/
+*.bak.*
+prompt_history.json
+prompt_history.md

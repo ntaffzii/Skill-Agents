@@ -1,0 +1,93 @@
+[
+  {
+    "id": "coding-basic",
+    "title": "Coding Basic",
+    "description": "Small default toolset for everyday code inspection, editing, and validation.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression"],
+    "toolGroups": ["filesystem", "project", "docs", "repo-index", "git", "git-control", "code-editing", "validation", "structured-data"]
+  },
+  {
+    "id": "backend-review",
+    "title": "Backend Review",
+    "description": "Inspect backend, API, database, config, dependency, and test risk before review or implementation.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "toolGroups": ["project", "docs", "repo-index", "package", "docker", "api", "database", "config", "test-inspection", "ci", "dependency-risk", "security-scanner", "git", "validation"]
+  },
+  {
+    "id": "frontend-ui",
+    "title": "Frontend UI",
+    "description": "Inspect frontend structure, package scripts, local browser readiness, static HTML, and UI validation paths.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "toolGroups": ["project", "docs", "repo-index", "package", "docker", "browser", "browser-page-map", "playwright", "playwright-actions", "figma", "test-inspection", "ci", "git", "code-editing", "validation", "media"]
+  },
+  {
+    "id": "skill-authoring",
+    "title": "Skill Authoring",
+    "description": "Create, validate, route, and document skills, workflows, and registry updates.",
+    "recommendedWorkflows": ["create-new-skill", "build-mcp-tool"],
+    "toolGroups": ["filesystem", "docs", "repo-index", "registry", "skill-runtime", "external-mcp-catalog", "structured-data", "task", "memory", "memory-context", "notion", "web", "web-capture", "prompt-improver", "validation"]
+  },
+  {
+    "id": "safe-maintenance",
+    "title": "Safe Maintenance",
+    "description": "Use before broad edits, repo cleanup, release preparation, or risky maintenance.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "toolGroups": ["registry", "audit", "mcp-security-audit", "security-scanner", "backup", "git", "git-control", "github-api", "external-mcp-catalog", "task", "release", "dependency-risk", "config", "ci", "docker", "validation", "user-runner"]
+  },
+  {
+    "id": "agent-control-plane",
+    "title": "Agent Control Plane",
+    "description": "Discover available tools, policy, audit state, runtime capabilities, memory, and safe experiment paths.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "build-mcp-tool"],
+    "toolGroups": ["registry", "skill-runtime", "toolsets", "audit", "mcp-security-audit", "memory", "memory-context", "vector-memory", "external-mcp-catalog", "web-capture", "sandbox", "system", "user-runner"]
+  },
+  {
+    "id": "finance-research",
+    "title": "Finance Research",
+    "description": "Research markets, stocks, crypto, finance news, watchlists, and educational risk calculations.",
+    "recommendedWorkflows": ["research-report"],
+    "toolGroups": ["finance-market", "web", "web-capture", "memory", "memory-context", "vector-memory", "docs", "prompt-improver"]
+  },
+  {
+    "id": "workspace-integrations",
+    "title": "Workspace Integrations",
+    "description": "Work with Notion, Obsidian-adjacent notes, Slack, Discord, and cross-app handoffs.",
+    "recommendedWorkflows": ["research-report", "obsidian-vault-cleanup", "create-new-skill"],
+    "toolGroups": ["notion", "obsidian-notion-bridge", "slack-discord", "email-inbox", "calendar", "web-capture", "memory", "memory-context", "vector-memory", "rag-adapter", "docs", "prompt-improver"]
+  },
+  {
+    "id": "design-frontend",
+    "title": "Design Frontend",
+    "description": "Inspect Figma designs and map UI pages before frontend implementation or review.",
+    "recommendedWorkflows": ["ship-feature", "review-pr"],
+    "toolGroups": ["figma", "browser-page-map", "project", "docs", "repo-index", "package", "browser", "playwright", "playwright-actions", "test-inspection", "ci", "git", "code-editing", "validation", "media"]
+  },
+  {
+    "id": "data-query",
+    "title": "Data Query",
+    "description": "Inspect database shape and run read-only Postgres research when configured.",
+    "recommendedWorkflows": ["debug-regression", "review-pr", "ship-feature"],
+    "toolGroups": ["database", "postgres", "security-scanner", "config", "validation"]
+  },
+  {
+    "id": "personal-daily-agent",
+    "title": "Personal Daily Agent",
+    "description": "Plan the day, summarize inbox/chat/calendar context, connect notes, and produce personal action handoffs.",
+    "recommendedWorkflows": ["daily-personal-agent", "personal-knowledge-sync", "research-report"],
+    "toolGroups": ["skill-runtime", "calendar", "email-inbox", "notion", "obsidian-notion-bridge", "slack-discord", "issue-tracker", "memory", "memory-context", "vector-memory", "rag-adapter", "docs", "web", "web-capture", "finance-market", "prompt-improver", "user-runner"]
+  },
+  {
+    "id": "personal-knowledge-rag",
+    "title": "Personal Knowledge RAG",
+    "description": "Index and search local notes, memories, Notion context, research, and handoffs.",
+    "recommendedWorkflows": ["personal-knowledge-sync", "research-report", "create-new-skill"],
+    "toolGroups": ["skill-runtime", "filesystem", "docs", "repo-index", "memory", "memory-context", "vector-memory", "rag-adapter", "notion", "obsidian-notion-bridge", "structured-data", "web-capture"]
+  },
+  {
+    "id": "task-issue-planning",
+    "title": "Task Issue Planning",
+    "description": "Turn personal notes, chats, email, or requirements into issues and implementation plans.",
+    "recommendedWorkflows": ["ship-feature", "debug-regression", "daily-personal-agent"],
+    "toolGroups": ["skill-runtime", "issue-tracker", "github-api", "notion", "slack-discord", "email-inbox", "calendar", "docs", "memory-context", "git", "prompt-improver"]
+  }
+]
