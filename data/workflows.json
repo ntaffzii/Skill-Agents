@@ -1,5 +1,44 @@
 [
   {
+    "id": "frontend-interface",
+    "title": "Frontend Interface",
+    "description": "Build, design, implement, harden, audit, and browser-validate frontend UI for responsive dashboards, SaaS apps, admin panels, accessible forms, accessibility, React, Vue, Svelte, HTML, CSS, components, pages, and interaction flows.",
+    "path": "workflows/build-ui.md",
+    "recommendedSkills": [
+      "ui-design-engineering",
+      "tdd",
+      "code-review",
+      "handoff"
+    ],
+    "steps": [
+      {
+        "title": "Discover",
+        "goal": "Inspect the user workflow, product domain, frontend stack, design system, and related screens.",
+        "recommendedSkills": ["ui-design-engineering", "architecture-review"]
+      },
+      {
+        "title": "Shape",
+        "goal": "Define hierarchy, density, responsive behavior, interaction states, and product-specific design intent.",
+        "recommendedSkills": ["ui-design-engineering"]
+      },
+      {
+        "title": "Implement",
+        "goal": "Build complete accessible behavior using established project patterns.",
+        "recommendedSkills": ["ui-design-engineering", "tdd"]
+      },
+      {
+        "title": "Validate",
+        "goal": "Run tests and verify the real page with browser and Playwright checks across viewports.",
+        "recommendedSkills": ["ui-design-engineering", "code-review"]
+      },
+      {
+        "title": "Hand Off",
+        "goal": "Summarize implementation, visual verification, accessibility, and residual risks.",
+        "recommendedSkills": ["handoff"]
+      }
+    ]
+  },
+  {
     "id": "ship-feature",
     "title": "Ship Feature",
     "description": "Take a feature request from unclear intent to implemented, verified, reviewable code.",

@@ -17,7 +17,7 @@
     "id": "frontend-ui",
     "title": "Frontend UI",
     "description": "Inspect frontend structure, package scripts, local browser readiness, static HTML, and UI validation paths.",
-    "recommendedWorkflows": ["ship-feature", "debug-regression", "review-pr"],
+    "recommendedWorkflows": ["frontend-interface", "ship-feature", "debug-regression", "review-pr"],
     "toolGroups": ["project", "docs", "repo-index", "package", "docker", "browser", "browser-page-map", "playwright", "playwright-actions", "figma", "test-inspection", "ci", "git", "code-editing", "validation", "media"]
   },
   {
@@ -59,7 +59,7 @@
     "id": "design-frontend",
     "title": "Design Frontend",
     "description": "Inspect Figma designs and map UI pages before frontend implementation or review.",
-    "recommendedWorkflows": ["ship-feature", "review-pr"],
+    "recommendedWorkflows": ["frontend-interface", "ship-feature", "review-pr"],
     "toolGroups": ["figma", "browser-page-map", "project", "docs", "repo-index", "package", "browser", "playwright", "playwright-actions", "test-inspection", "ci", "git", "code-editing", "validation", "media"]
   },
   {
