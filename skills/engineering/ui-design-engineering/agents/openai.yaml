@@ -1,0 +1,7 @@
+interface:
+  display_name: "UI Design Engineering"
+  short_description: "Build, harden, and audit production interfaces"
+  default_prompt: "Use $ui-design-engineering with the frontend toolset to design, implement, and browser-validate this interface."
+
+policy:
+  allow_implicit_invocation: true
