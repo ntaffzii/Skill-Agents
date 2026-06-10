@@ -48,12 +48,22 @@ New-Item -ItemType Directory -Force -Path $SkillRepo, $ToolsRepo | Out-Null
 
 $SkillItems = @(
     ".gitignore",
+    ".env.example",
+    ".github",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE.md",
+    "QUICKSTART.md",
     "README.md",
+    "SECURITY.md",
     "Skill.md",
+    "config.json",
     "data",
     "docs",
+    "examples",
     "scripts",
     "skills",
+    "user-run-scripts",
     "workflows"
 )
 
@@ -62,15 +72,20 @@ foreach ($Item in $SkillItems) {
 }
 
 $ToolItems = @(
+    "LICENSE",
+    "NOTICE.md",
+    "QUICKSTART.md",
+    "README.md",
+    "SECURITY.md",
     "server.py",
+    "server_http.py",
     "security.py",
     "requirements.txt",
     "trusted_sources.json",
     "config",
     "prompt_engine",
     "tools",
-    "tests",
-    "README.md"
+    "tests"
 )
 
 foreach ($Item in $ToolItems) {
