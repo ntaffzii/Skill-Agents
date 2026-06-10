@@ -12,6 +12,9 @@ The structure and documentation style were informed by studying:
 - `sickn33/antigravity-awesome-skills` - large-scale skill catalogs, role bundles, workflows, validation, and installer-oriented organization.
 - `google/skills` - product/domain-specific skill packs, installation notes, contribution guidance, and Apache-licensed distribution.
 - `anthropics/skills` - public Agent Skills examples and the broader Agent Skills concept.
+- [UI Skills](https://www.ui-skills.com/skills/) by Interface Office - a curated design-engineering skill directory whose taxonomy and linked skills informed the original `ui-design-engineering` synthesis in this repository.
+
+The UI skill synthesis was particularly informed by public descriptions and patterns from Baseline UI and Fixing Accessibility by Ibelick, Frontend Design by Anthropic, Interface Design by Dammyjay93, Impeccable and its focused modes by Paul Bakaus, plus framework, browser-testing, performance, motion, and accessibility entries cataloged by UI Skills. Full links and adaptation notes are in `skills/engineering/ui-design-engineering/references/credits.md`.
 
 ## License Notes
 
@@ -31,6 +34,6 @@ This project reuses ideas and patterns, not wholesale upstream skill files:
 - tool registry and toolset ideas
 - safety-first documentation style
 - install and validation documentation patterns
+- UI design-engineering taxonomy covering product intent, accessibility, interaction, motion, responsive adaptation, hardening, performance, and browser validation
 
 If any future file copies upstream text, code, scripts, or assets directly, add a file-level note and preserve the upstream license requirements.
-

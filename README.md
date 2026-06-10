@@ -11,7 +11,10 @@ For executable MCP tools, use the companion repo:
 ```text
 Skill-Agents       = skills, workflows, docs, examples, provider config
 ai-desk-tools      = MCP server, Python tools, tests, runtime safety policy
+local-llm          = llama.cpp Router, FastAPI Orchestrator, Docker deployment
 ```
+
+Recommended Local LLM repository name: `ntaffzii/local-llm-orchestrator`.
 
 ## Who This Is For
 
@@ -53,6 +56,7 @@ cd Skill-Agents
 Read first:
 
 - [QUICKSTART.md](QUICKSTART.md)
+- [docs/COMPLETE_LOCAL_AI_SYSTEM.md](docs/COMPLETE_LOCAL_AI_SYSTEM.md)
 - [docs/PROJECT_GUIDE.md](docs/PROJECT_GUIDE.md)
 - [docs/USAGE_FOR_PERSONAL_AND_OTHERS.md](docs/USAGE_FOR_PERSONAL_AND_OTHERS.md)
 
@@ -266,4 +270,3 @@ See [NOTICE.md](NOTICE.md) for attribution and license notes.
 ## License
 
 See [LICENSE](LICENSE).
-
