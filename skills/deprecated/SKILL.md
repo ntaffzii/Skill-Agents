@@ -1,5 +1,5 @@
 ---
-name: deprecated-skill-maintenance
+name: deprecated
 description: Retire, preserve, explain, or replace old skills without silently deleting useful history. Use when the user asks to deprecate a skill, replace a skill, audit stale skills, or understand why a skill should no longer be used.
 ---
 

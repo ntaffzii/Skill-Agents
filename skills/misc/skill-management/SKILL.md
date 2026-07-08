@@ -1,6 +1,6 @@
 ---
 name: skill-management
-description: Manage a skill repository: create, classify, improve, deprecate, or reorganize agent skills with clean buckets, clear SKILL.md metadata, progressive disclosure, and installable structure. Use when the user asks to make skills, organize skills, compare skill quality, or maintain a skills repo.
+description: "Manage a skill repository: create, classify, improve, deprecate, or reorganize agent skills with clean buckets, clear SKILL.md metadata, progressive disclosure, and installable structure. Use when the user asks to make skills, organize skills, compare skill quality, or maintain a skills repo."
 ---
 
 # Skill Management
@@ -76,9 +76,9 @@ Also add or update the matching entry in `data/workflows.json` with:
 
 The status buckets also contain their own operating skills:
 
-- `in-progress-skill-incubator` - prototype and promote draft skills.
-- `personal-skill-rules` - keep user-specific instructions private and scoped.
-- `deprecated-skill-maintenance` - retire stale skills with replacement guidance.
+- `in-progress` - prototype and promote draft skills.
+- `personal` - keep user-specific instructions private and scoped.
+- `deprecated` - retire stale skills with replacement guidance.
 
 ## Rules
 

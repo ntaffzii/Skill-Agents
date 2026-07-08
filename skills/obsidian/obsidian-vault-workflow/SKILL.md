@@ -1,6 +1,6 @@
 ---
 name: obsidian-vault-workflow
-description: Operate across an Obsidian vault: organize notes, maintain links, normalize tags and properties, create indexes, update maps of content, and preserve vault conventions. Use when the user asks to clean, organize, connect, refactor, or maintain an Obsidian vault.
+description: "Operate across an Obsidian vault: organize notes, maintain links, normalize tags and properties, create indexes, update maps of content, and preserve vault conventions. Use when the user asks to clean, organize, connect, refactor, or maintain an Obsidian vault."
 ---
 
 # Obsidian Vault Workflow

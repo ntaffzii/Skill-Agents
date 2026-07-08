@@ -1,5 +1,5 @@
 ---
-name: in-progress-skill-incubator
+name: in-progress
 description: Manage draft skills that are not ready to ship yet. Use when the user asks to prototype, sketch, test, evaluate, or promote an experimental skill from in-progress into a stable skill bucket.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: personal-skill-rules
+name: personal
 description: Manage personal-only skills and private agent preferences that should not be promoted into public or team skill buckets. Use when the user asks to add personal rules, local setup guidance, private workflows, preferences, or machine-specific instructions.
 ---
 
