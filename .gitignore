@@ -7,3 +7,5 @@ mcp-tools/tests/scratch/
 *.bak.*
 prompt_history.json
 prompt_history.md
+mcp-tools/
+
