@@ -1,7 +1,7 @@
 # git_publish_skill_agents
 # Risk: high
 # Purpose: Initialize and push the GitHub-ready Skill-Agents repo. Requires a remote URL.
-# Generated: 2026-07-08 21:30:28
+# Generated: 2026-08-02 16:23:24
 #
 # Review this script before running it.
 # Run from the combined Skill-Agents repo unless the script says otherwise.
