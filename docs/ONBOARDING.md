@@ -32,4 +32,4 @@ Generated from a graph with 100 nodes and 164 edges.
 18. market_breadth_analyzer_breadth_py_decimal — Decimal
 19. market_breadth_analyzer_breadth — breadth.py
 20. market_breadth_analyzer_breadth_rationale_33 — rows: list of dicts with at least `price_field` and `ma_field` keys (numeric str
-- ... and 80 more (see the full graph)
+- ... and 80 more — the onboarding doc only lists the first 20 for readability. Run `python3 build_tour.py <graph.json> --out TOUR.md` against the same graph for the complete 100-entry order.

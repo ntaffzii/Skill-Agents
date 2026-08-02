@@ -69,7 +69,11 @@ def render_onboarding_doc(project_name: str, nodes: list[dict], edges: list[dict
             summary = f" — {node['summary']}" if node["summary"] else ""
             lines.append(f"{i}. {item['id']}{summary}{flag}")
         if len(tour) > tour_limit:
-            lines.append(f"- ... and {len(tour) - tour_limit} more (see the full graph)")
+            lines.append(
+                f"- ... and {len(tour) - tour_limit} more — the onboarding doc only lists the "
+                f"first {tour_limit} for readability. Run `python3 build_tour.py <graph.json> "
+                f"--out TOUR.md` against the same graph for the complete {len(tour)}-entry order."
+            )
         lines.append("")
 
     return "\n".join(lines)
@@ -105,6 +109,16 @@ def _self_test() -> None:
     assert "## Start here" in doc
     assert "## Suggested reading order" in doc
     assert "core" in doc  # the foundational, no-dependency node should appear
+    assert "more" not in doc  # only 3 nodes, well under the default tour_limit=20 -- no truncation message
+
+    # Truncation message: with more nodes than tour_limit, the doc must point
+    # somewhere actionable (build_tour.py), not just say "see the full graph"
+    # with no indication of how -- this exact gap was reported after a real run.
+    many_nodes = [{"id": f"n{i}", "summary": "", "community": 0, "raw": {}} for i in range(25)]
+    truncated_doc = render_onboarding_doc("Big Project", many_nodes, [], tour_limit=20)
+    assert "... and 5 more" in truncated_doc
+    assert "build_tour.py" in truncated_doc
+    assert "--out" in truncated_doc
 
     # Empty graph doesn't crash, produces a doc that says so
     empty_doc = render_onboarding_doc("Empty Project", [], [])
