@@ -1,0 +1,25 @@
+# Trade journal entry schema — one entry per closed trade.
+# Store as a local YAML/JSON file the user controls; this skill does not
+# persist anything on its own. Synthetic example values below.
+
+- trade_id: "2026-05-16-AAA-01"
+  ticker: "AAA"
+  direction: "long"                 # long | short
+  setup_tag: "breakout-pullback"    # free-text label matching the user's own playbook
+  date_open: "2026-05-16"
+  date_close: "2026-05-20"
+  entry: 50.00
+  stop: 48.00                       # initial stop, used to compute R-multiple — record the ORIGINAL stop, not a trailed one
+  exit: 54.00
+  shares: 500
+  r_multiple: 2.00                  # (exit - entry) / (entry - stop) for a long trade — see journal_stats.py:compute_r_multiple
+  max_favorable_pct: null           # optional: best unrealized % during the trade, for post-trade review
+  max_adverse_pct: null             # optional: worst unrealized % during the trade
+  notes: "Followed plan. Exited at pre-defined target, did not trail further."
+  mistake_tags: []                  # e.g. ["moved stop", "sized too large", "chased entry"] — empty if none
+
+# Fields worth keeping even on a losing trade:
+# - Was the stop respected as planned, or moved?
+# - Was position size per the plan (position-sizer output), or overridden in the moment?
+# - What would signal-postmortem-style review say was the actual reason for the loss
+#   (bad setup vs. good setup / bad luck vs. execution error)?

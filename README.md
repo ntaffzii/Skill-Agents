@@ -156,7 +156,7 @@ Skill-Agents/
   Skill.md/        portable model-neutral skills
   skills/          local skill folders with SKILL.md
   workflows/       ordered workflow playbooks
-  data/            tools/toolsets/workflows registry metadata
+  data/            tools/toolsets/workflows/skills-index registry metadata
   docs/            guides and usage docs
   examples/        prompts and MCP client examples
   scripts/         validators and repo utilities
@@ -178,11 +178,12 @@ Skill-Agents/
 ## Skill Categories
 
 - `engineering/` - diagnose, TDD, code review, architecture review
-- `research/` - news, GitHub skill research, project discovery
+- `research/` - news, GitHub skill research, project discovery, claim/citation integrity check
 - `productivity/` - handoff, prompt improvement, reports, automation, inbox triage
 - `obsidian/` - Markdown, Canvas, vault workflow, Notion bridge
 - `misc/` - skill and MCP tool management
-- `thai/` - Thai-locale domain knowledge (tax invoices, government letters, PDPA, ID/PromptPay validation, dates, translation, resumes) - roadmap, see `skills/thai/SKILL.md`
+- `thai/` - Thai-locale domain knowledge (tax invoices, government letters, PDPA, ID/PromptPay validation, dates, translation, resumes) - see `skills/thai/SKILL.md`
+- `trading/` - market regime, position sizing, risk gates, portfolio review, trade journaling (not financial advice) - see `skills/trading/SKILL.md`
 - `personal/` - private/personal preferences and daily-agent workflow
 - `in-progress/` - draft skills
 - `deprecated/` - retired skills with replacement guidance
@@ -260,6 +261,7 @@ This validates:
 - workflows
 - `skills/**/SKILL.md`
 - `Skill.md/**/SKILL.md`
+- `data/skills-index.json` is current (regenerate with `scripts/generate-skills-index.ps1` after adding/renaming/removing a skill)
 - MCP tool Python syntax and tests when tools are present
 
 ## Attribution
