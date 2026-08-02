@@ -22,7 +22,7 @@ import sys
 
 from graph_adapter import build_adjacency, load_graph
 
-DEPENDENCY_EDGE_TYPES = {"imports", "depends_on", "requires"}
+DEPENDENCY_EDGE_TYPES = {"imports", "imports_from", "depends_on", "requires"}
 
 
 def topological_tour(nodes: list[dict], edges: list[dict], edge_types: set[str] = DEPENDENCY_EDGE_TYPES) -> list[dict]:
@@ -97,6 +97,14 @@ def _self_test() -> None:
     # Dangling edge (target not in node list) is skipped, not a crash
     dangling_order = topological_tour([{"id": "A"}], [{"source": "A", "target": "ghost", "type": "imports"}])
     assert [item["id"] for item in dangling_order] == ["A"]
+
+    # "imports_from" is graphify's real AST edge type for a Python import
+    # (confirmed against a live graphify-out/graph.json, not "imports")
+    real_type_order = topological_tour(
+        [{"id": "A"}, {"id": "B"}],
+        [{"source": "A", "target": "B", "type": "imports_from"}],
+    )
+    assert [item["id"] for item in real_type_order] == ["B", "A"]
 
     # Non-dependency edge types (e.g. "related") are ignored for ordering purposes --
     # both nodes have zero *dependency* edges, so both resolve immediately, in id order

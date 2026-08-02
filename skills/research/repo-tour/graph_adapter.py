@@ -1,16 +1,26 @@
 #!/usr/bin/env python3
 """graph_adapter.py -- schema-tolerant loader/normalizer for a graphify-style graph.json.
 
-Why defensive parsing: this module's field-name list was inferred from
-graphify's own SKILL.md (which shows intermediate extraction shapes like
-{"id": ..., "source": ..., "target": ...}) rather than confirmed against a
-real graphify-out/graph.json export -- no sample was available when this was
-written. Rather than hard-code one assumed schema and silently mis-parse a
-differently-shaped export, every field lookup tries several common key name
-variants and fails loudly (ValueError) if none match, instead of guessing.
+Field names below are confirmed against graphify's actual installed source
+(graphify/export.py's to_json(), read directly -- not guessed) as of the
+version installed when this was verified: graph.json is produced by
+networkx.readwrite.json_graph.node_link_data(G, edges="links"), which means:
 
-Run `python3 graph_adapter.py` for the self-test (uses synthetic data, not a
-real graph export -- see SKILL.md "Known limitations").
+- The top-level edge list key is **"links"**, not "edges" (confirmed live:
+  a naive `raw["edges"]` silently returns nothing against a real export).
+- Node type lives in **"file_type"** (code/document/paper/image/rationale/
+  concept), not "type".
+- Node file path lives in **"source_file"**, not "filePath"/"path".
+- Node display name lives in **"label"**, not "summary" (there is no
+  separate summary field on a real node).
+- Edge relation type lives in **"relation"** (calls/imports/implements/...),
+  confidence in "confidence" (EXTRACTED/INFERRED/AMBIGUOUS) and
+  "confidence_score" (0-1 float).
+
+Every field lookup still tries multiple key-name variants (the confirmed
+name first) rather than hard-coding one exact key -- graphify is an actively
+developed external project and its export schema could still change between
+versions. Run `python3 graph_adapter.py` for the self-test.
 """
 from __future__ import annotations
 
@@ -18,15 +28,19 @@ import json
 from pathlib import Path
 
 NODE_ID_KEYS = ["id", "node_id", "name"]
-NODE_TYPE_KEYS = ["type", "node_type", "kind"]
-NODE_PATH_KEYS = ["filePath", "file_path", "path", "source_location", "location"]
+NODE_TYPE_KEYS = ["file_type", "type", "node_type", "kind"]
+NODE_PATH_KEYS = ["source_file", "filePath", "file_path", "path", "source_location", "location"]
 NODE_SUMMARY_KEYS = ["summary", "description", "label"]
 NODE_COMMUNITY_KEYS = ["community", "cluster", "community_id"]
 
 EDGE_SOURCE_KEYS = ["source", "from", "src", "start"]
 EDGE_TARGET_KEYS = ["target", "to", "dst", "end"]
-EDGE_TYPE_KEYS = ["type", "edge_type", "relation", "kind"]
-EDGE_WEIGHT_KEYS = ["weight", "confidence"]
+EDGE_TYPE_KEYS = ["relation", "type", "edge_type", "kind"]
+EDGE_WEIGHT_KEYS = ["confidence_score", "weight", "confidence"]
+
+# Top-level key holding the edge list. graphify's node_link_data(..., edges="links")
+# renames it to "links"; some other tools/older versions may still use "edges".
+EDGE_LIST_KEYS = ["links", "edges"]
 
 
 def _first_present(d: dict, keys: list[str], default=None):
@@ -73,7 +87,7 @@ def load_graph(path: str) -> dict:
     """
     raw = json.loads(Path(path).read_text(encoding="utf-8"))
     raw_nodes = raw.get("nodes", [])
-    raw_edges = raw.get("edges", [])
+    raw_edges = _first_present(raw, EDGE_LIST_KEYS, [])
     if not raw_nodes:
         raise ValueError(
             f"{path}: no non-empty 'nodes' array found -- is this really a graph.json? "
@@ -101,7 +115,21 @@ def build_adjacency(edges: list[dict], edge_types: set[str] | None = None) -> tu
 
 
 def _self_test() -> None:
-    # Nodes using different key-name conventions -- both must normalize the same way
+    # Real graphify node shape (confirmed against graphify/export.py): file_type,
+    # source_file, label -- not type/filePath/summary.
+    real_shape_node = normalize_node({
+        "id": "skills_trading_position_sizer_size_fixed_fractional_size",
+        "file_type": "code",
+        "source_file": "skills/trading/position-sizer/size.py",
+        "label": "fixed_fractional_size",
+        "community": 2,
+    })
+    assert real_shape_node["type"] == "code"
+    assert real_shape_node["path"] == "skills/trading/position-sizer/size.py"
+    assert real_shape_node["summary"] == "fixed_fractional_size"  # falls back to label
+    assert real_shape_node["community"] == 2
+
+    # Nodes using other key-name conventions -- both must normalize the same way
     node_a = normalize_node({"id": "file:a.py", "type": "file", "filePath": "a.py", "summary": "Module A"})
     node_b = normalize_node({"node_id": "file:b.py", "node_type": "file", "path": "b.py"})
     assert node_a["id"] == "file:a.py"
@@ -117,7 +145,14 @@ def _self_test() -> None:
     except ValueError:
         pass
 
-    # Edges using different key-name conventions
+    # Real graphify edge shape: relation + confidence_score, not type/weight
+    real_shape_edge = normalize_edge({
+        "source": "a_py_foo", "target": "b_py_bar", "relation": "calls", "confidence_score": 0.85,
+    })
+    assert real_shape_edge["type"] == "calls"
+    assert real_shape_edge["weight"] == 0.85
+
+    # Edges using other key-name conventions
     edge = normalize_edge({"from": "file:a.py", "to": "file:b.py", "relation": "imports"})
     assert edge["source"] == "file:a.py"
     assert edge["target"] == "file:b.py"
@@ -139,6 +174,19 @@ def _self_test() -> None:
     assert [e["target"] for e in forward["a"]] == ["b"]
     assert "a" not in {e["source"] for e in forward.get("c", [])}  # "related" edge filtered out
     assert reverse["b"][0]["source"] == "a"
+
+    # load_graph resolves the edge list from "links" (graphify's real key) before "edges"
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmpdir:
+        links_path = Path(tmpdir) / "links-style.json"
+        links_path.write_text(json.dumps({
+            "nodes": [{"id": "x", "file_type": "code", "source_file": "x.py", "label": "X"}],
+            "links": [{"source": "x", "target": "x", "relation": "self_ref"}],
+        }), encoding="utf-8")
+        graph = load_graph(str(links_path))
+        assert len(graph["nodes"]) == 1
+        assert len(graph["edges"]) == 1
+        assert graph["edges"][0]["type"] == "self_ref"
 
     print("All self-tests passed.")
 

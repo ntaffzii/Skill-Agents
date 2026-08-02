@@ -20,18 +20,37 @@ import sys
 
 from graph_adapter import build_adjacency, load_graph
 
-IMPACT_EDGE_TYPES = {"imports", "depends_on", "requires", "calls"}
+IMPACT_EDGE_TYPES = {"imports", "imports_from", "depends_on", "requires", "calls"}
 
 
 def find_node_by_path(nodes: list[dict], file_path: str) -> list[dict]:
     """Match a file path against node['path'], tolerant of relative-vs-absolute
-    and leading-slash differences (endswith in both directions)."""
+    path differences (a query or node path may be scoped to a different root).
+
+    Suffix matching requires the *shorter* of the two paths to contain at
+    least one directory separator. Without this guard, a bare generic
+    filename (e.g. a node whose relativized path is literally "SKILL.md",
+    which graphify produces for a root-level skill file with no subfolder)
+    would suffix-match against *any* longer path ending in "/SKILL.md" --
+    confirmed as a real false positive when multiple sibling skills each
+    have their own SKILL.md.
+    """
+    normalized_query = file_path.replace("\\", "/").strip("/")
     matches = []
     for node in nodes:
         node_path = node["path"]
         if not node_path:
             continue
-        if node_path == file_path or node_path.endswith(file_path) or file_path.endswith(node_path):
+        normalized_node = node_path.replace("\\", "/").strip("/")
+        if normalized_node == normalized_query:
+            matches.append(node)
+            continue
+        shorter, longer = (
+            (normalized_node, normalized_query)
+            if len(normalized_node) <= len(normalized_query)
+            else (normalized_query, normalized_node)
+        )
+        if "/" in shorter and longer.endswith("/" + shorter):
             matches.append(node)
     return matches
 
@@ -132,6 +151,21 @@ def _self_test() -> None:
     # find_node_by_path tolerates a relative vs. project-relative path mismatch
     matches = find_node_by_path(nodes, "./b.py".lstrip("./"))
     assert matches[0]["id"] == "B"
+
+    # Regression: a bare, generic filename node path (e.g. graphify's "SKILL.md" for
+    # a root-level skill) must NOT suffix-match an unrelated longer path that merely
+    # ends with the same generic filename -- confirmed as a real false positive
+    # against a live graphify graph (a nested "foo/SKILL.md" query was incorrectly
+    # matching the router's bare "SKILL.md" node).
+    bare_filename_nodes = [
+        {"id": "router", "path": "SKILL.md"},
+        {"id": "sub_skill", "path": "some-skill/SKILL.md"},
+    ]
+    bare_matches = find_node_by_path(bare_filename_nodes, "some-skill/SKILL.md")
+    assert [m["id"] for m in bare_matches] == ["sub_skill"]  # exact match only, not also "router"
+    # A genuinely ambiguous bare-filename query still matches only the exact node
+    exact_bare_matches = find_node_by_path(bare_filename_nodes, "SKILL.md")
+    assert [m["id"] for m in exact_bare_matches] == ["router"]
 
     report = render_impact_report(result)
     assert "b.py" in report

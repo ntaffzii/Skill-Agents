@@ -9,3 +9,8 @@ prompt_history.json
 prompt_history.md
 mcp-tools/
 
+# graphify output: machine-local cache + absolute interpreter path, never portable.
+# Regenerate with /graphify <path> instead of committing it.
+graphify-out/
+**/graphify-out/
+
