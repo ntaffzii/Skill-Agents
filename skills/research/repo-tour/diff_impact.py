@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import sys
 
-from graph_adapter import build_adjacency, load_graph
+from graph_adapter import build_adjacency, load_graph, parse_out_flag, write_or_print
 
 IMPACT_EDGE_TYPES = {"imports", "imports_from", "depends_on", "requires", "calls"}
 
@@ -182,13 +182,14 @@ def _main() -> None:
     # Force UTF-8 stdout: on Windows, redirecting output to a file (`> impact.md`) can
     # otherwise pick up the console's legacy codepage and write invalid UTF-8 bytes.
     sys.stdout.reconfigure(encoding="utf-8")
-    if len(sys.argv) < 3:
-        print("Usage: python3 diff_impact.py <graph.json> <changed_file1> [changed_file2 ...]")
+    argv, out_path = parse_out_flag(sys.argv[1:])
+    if len(argv) < 2:
+        print("Usage: python3 diff_impact.py <graph.json> <changed_file1> [changed_file2 ...] [--out impact.md]")
         raise SystemExit(1)
-    graph = load_graph(sys.argv[1])
-    changed_paths = sys.argv[2:]
+    graph = load_graph(argv[0])
+    changed_paths = argv[1:]
     result = impact_of_changed_files(graph["nodes"], graph["edges"], changed_paths)
-    print(render_impact_report(result))
+    write_or_print(render_impact_report(result), out_path)
 
 
 if __name__ == "__main__":

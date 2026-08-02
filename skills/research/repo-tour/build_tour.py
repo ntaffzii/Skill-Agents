@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import sys
 
-from graph_adapter import build_adjacency, load_graph
+from graph_adapter import build_adjacency, load_graph, parse_out_flag, write_or_print
 
 DEPENDENCY_EDGE_TYPES = {"imports", "imports_from", "depends_on", "requires"}
 
@@ -66,6 +66,17 @@ def topological_tour(nodes: list[dict], edges: list[dict], edge_types: set[str] 
         order.append({"id": nid, "resolved_by": "cycle_fallback"})
 
     return order
+
+
+def render_tour_markdown(order: list[dict], nodes: list[dict]) -> str:
+    by_id = {n["id"]: n for n in nodes}
+    lines = ["# Guided Tour", "", f"Dependency-ordered reading list, {len(order)} entries.", ""]
+    for i, item in enumerate(order, 1):
+        node = by_id[item["id"]]
+        flag = "" if item["resolved_by"] == "topological" else " _(part of a dependency cycle)_"
+        summary = f" — {node['summary']}" if node["summary"] else ""
+        lines.append(f"{i}. `{item['id']}`{summary}{flag}")
+    return "\n".join(lines)
 
 
 def _self_test() -> None:
@@ -115,6 +126,13 @@ def _self_test() -> None:
     assert [item["id"] for item in unrelated_order] == ["A", "B"]
     assert [item["resolved_by"] for item in unrelated_order] == ["topological", "topological"]
 
+    md = render_tour_markdown(
+        [{"id": "C", "resolved_by": "topological"}],
+        [{"id": "C", "summary": "leaf module"}],
+    )
+    assert "# Guided Tour" in md
+    assert "leaf module" in md
+
     print("All self-tests passed.")
 
 
@@ -123,17 +141,13 @@ def _main() -> None:
     # otherwise pick up the console's legacy codepage and write invalid UTF-8 bytes
     # for non-ASCII characters (e.g. the em dash used in node summaries below).
     sys.stdout.reconfigure(encoding="utf-8")
-    if len(sys.argv) < 2:
-        print("Usage: python3 build_tour.py <graph.json>")
+    argv, out_path = parse_out_flag(sys.argv[1:])
+    if len(argv) < 1:
+        print("Usage: python3 build_tour.py <graph.json> [--out tour.md]")
         raise SystemExit(1)
-    graph = load_graph(sys.argv[1])
+    graph = load_graph(argv[0])
     order = topological_tour(graph["nodes"], graph["edges"])
-    by_id = {n["id"]: n for n in graph["nodes"]}
-    for i, item in enumerate(order, 1):
-        node = by_id[item["id"]]
-        flag = "" if item["resolved_by"] == "topological" else "  [part of a dependency cycle]"
-        summary = f" -- {node['summary']}" if node["summary"] else ""
-        print(f"{i}. {item['id']}{summary}{flag}")
+    write_or_print(render_tour_markdown(order, graph["nodes"]), out_path)
 
 
 if __name__ == "__main__":

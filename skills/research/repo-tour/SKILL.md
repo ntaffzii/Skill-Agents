@@ -61,12 +61,26 @@ This is a **read-only report over the graph** — it does not run tests or execu
 
 All four modules are pure stdlib (no dependencies) and independently self-testable:
 
-- `graph_adapter.py` — schema-tolerant loader (`load_graph`, `normalize_node`, `normalize_edge`, `build_adjacency`)
-- `build_tour.py` — `topological_tour(nodes, edges)`; CLI: `python3 build_tour.py graphify-out/graph.json`
-- `build_onboarding.py` — `render_onboarding_doc(project_name, nodes, edges)`; CLI: `python3 build_onboarding.py graphify-out/graph.json "Project Name" > onboarding.md`
-- `diff_impact.py` — `impact_of_changed_files(nodes, edges, changed_paths)`; CLI: `python3 diff_impact.py graphify-out/graph.json <changed files...>`
+- `graph_adapter.py` — schema-tolerant loader (`load_graph`, `normalize_node`, `normalize_edge`, `build_adjacency`), plus the shared `--out` flag helpers (`parse_out_flag`, `write_or_print`) all three CLIs below use
+- `build_tour.py` — `topological_tour(nodes, edges)`; CLI: `python3 build_tour.py graphify-out/graph.json [--out tour.md]`
+- `build_onboarding.py` — `render_onboarding_doc(project_name, nodes, edges)`; CLI: `python3 build_onboarding.py graphify-out/graph.json "Project Name" [--out onboarding.md]`
+- `diff_impact.py` — `impact_of_changed_files(nodes, edges, changed_paths)`; CLI: `python3 diff_impact.py graphify-out/graph.json <changed files...> [--out impact.md]`
+
+All three CLIs write UTF-8 correctly to stdout by default, and to a file with `--out <path>` (parent directories are created automatically) — equivalent to `> file.md` but without depending on the shell's own redirect encoding behavior (see the earlier em-dash/Windows finding above).
 
 Run `python3 <file>.py` with no arguments for that module's self-test (uses synthetic in-memory graph data plus, for `graph_adapter.py`, a fixture in the real graphify shape — see below).
+
+## Where to put each output — they don't all belong in the same place
+
+The three outputs have different lifecycles; treat them differently, not identically:
+
+| Output | Persist it? | Where | Why |
+|---|---|---|---|
+| Onboarding doc | Yes, commit it | `docs/ONBOARDING.md` or repo root | Meant to be read by multiple people, repeatedly, over time — a durable artifact |
+| Guided tour | Optional | `docs/` alongside the onboarding doc | Nice to keep as a reference, less critical than the onboarding doc |
+| Diff impact | No — don't commit as a standing file | Paste into the PR description or chat directly | It describes one specific uncommitted diff; the moment that diff changes or merges, a saved file describing it is stale and misleading to a later reader who doesn't know it's from an old snapshot |
+
+Never write any of the three into `graphify-out/` itself — that directory is gitignored (it holds a machine-local absolute interpreter path and regenerable cache), so anything meant to be shared or kept must go somewhere your VCS actually tracks.
 
 ## Verified against a real graph (not just guessed)
 

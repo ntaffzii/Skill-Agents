@@ -16,7 +16,7 @@ import sys
 from collections import Counter
 
 from build_tour import topological_tour
-from graph_adapter import load_graph
+from graph_adapter import load_graph, parse_out_flag, write_or_print
 
 
 def compute_degree(edges: list[dict]) -> Counter:
@@ -118,12 +118,13 @@ def _main() -> None:
     # can otherwise pick up the console's legacy codepage and write invalid UTF-8
     # bytes for non-ASCII characters (e.g. the em dash used throughout this doc).
     sys.stdout.reconfigure(encoding="utf-8")
-    if len(sys.argv) < 2:
-        print('Usage: python3 build_onboarding.py <graph.json> "<Project Name>"')
+    argv, out_path = parse_out_flag(sys.argv[1:])
+    if len(argv) < 1:
+        print('Usage: python3 build_onboarding.py <graph.json> "<Project Name>" [--out onboarding.md]')
         raise SystemExit(1)
-    graph = load_graph(sys.argv[1])
-    project_name = sys.argv[2] if len(sys.argv) > 2 else "Project"
-    print(render_onboarding_doc(project_name, graph["nodes"], graph["edges"]))
+    graph = load_graph(argv[0])
+    project_name = argv[1] if len(argv) > 1 else "Project"
+    write_or_print(render_onboarding_doc(project_name, graph["nodes"], graph["edges"]), out_path)
 
 
 if __name__ == "__main__":

@@ -98,6 +98,40 @@ def load_graph(path: str) -> dict:
     return {"nodes": nodes, "edges": edges, "raw": raw}
 
 
+def parse_out_flag(argv: list[str]) -> tuple[list[str], str | None]:
+    """Extract an optional `--out <path>` flag from a CLI argv list.
+
+    Returns (remaining_argv, out_path); out_path is None if --out wasn't given.
+    Shared by all three repo-tour CLIs so `--out report.md` behaves identically
+    everywhere instead of each script reinventing its own flag parsing.
+    """
+    argv = list(argv)
+    if "--out" in argv:
+        idx = argv.index("--out")
+        if idx + 1 >= len(argv):
+            raise ValueError("--out requires a path argument")
+        out_path = argv[idx + 1]
+        del argv[idx : idx + 2]
+        return argv, out_path
+    return argv, None
+
+
+def write_or_print(text: str, out_path: str | None) -> None:
+    """Write `text` to out_path (UTF-8, creating parent directories) if given, else print it.
+
+    Centralizes the UTF-8-safe write so every CLI's `--out` path behaves the
+    same way regardless of the console's codepage (see the stdout-encoding
+    fix in each script's _main for why this matters on Windows).
+    """
+    if out_path:
+        path = Path(out_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+        print(f"Wrote {path}")
+    else:
+        print(text)
+
+
 def build_adjacency(edges: list[dict], edge_types: set[str] | None = None) -> tuple[dict, dict]:
     """forward[node_id] -> list of edges where node_id is the source.
     reverse[node_id] -> list of edges where node_id is the target.
@@ -187,6 +221,29 @@ def _self_test() -> None:
         assert len(graph["nodes"]) == 1
         assert len(graph["edges"]) == 1
         assert graph["edges"][0]["type"] == "self_ref"
+
+    # parse_out_flag: present, absent, and at-the-end-with-no-value cases
+    remaining, out_path = parse_out_flag(["graph.json", "--out", "report.md"])
+    assert remaining == ["graph.json"]
+    assert out_path == "report.md"
+    remaining2, out_path2 = parse_out_flag(["graph.json", "file1.py", "file2.py"])
+    assert remaining2 == ["graph.json", "file1.py", "file2.py"]
+    assert out_path2 is None
+    try:
+        parse_out_flag(["graph.json", "--out"])
+        assert False, "expected ValueError"
+    except ValueError:
+        pass
+
+    # write_or_print: no out_path prints (can't easily assert stdout here without
+    # capturing it, so just confirm it doesn't raise); with out_path it writes UTF-8
+    # and creates parent directories that don't exist yet
+    write_or_print("hello", None)
+    with tempfile.TemporaryDirectory() as tmpdir:
+        nested_path = Path(tmpdir) / "nested" / "report.md"
+        write_or_print("# Report\n\nSome em dash — text.", str(nested_path))
+        assert nested_path.exists()
+        assert nested_path.read_text(encoding="utf-8") == "# Report\n\nSome em dash — text."
 
     print("All self-tests passed.")
 
