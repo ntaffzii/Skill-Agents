@@ -13,6 +13,7 @@ The structure and documentation style were informed by studying:
 - `google/skills` - product/domain-specific skill packs, installation notes, contribution guidance, and Apache-licensed distribution.
 - `anthropics/skills` - public Agent Skills examples and the broader Agent Skills concept.
 - [UI Skills](https://www.ui-skills.com/skills/) by Interface Office - a curated design-engineering skill directory whose taxonomy and linked skills informed the original `ui-design-engineering` synthesis in this repository.
+- [Boom-Vitt/claude-thai-skills](https://github.com/Boom-Vitt/claude-thai-skills) (MIT) - locale-specific content-domain skill design (trigger-phrase-rich frontmatter, When-to-use/When-NOT-to-use boundaries, common-mistakes and known-limitations sections) that informed the `skills/thai/` category in this repository. Legal, tax, and formatting content is written fresh and checked against current sources, not copied from that repository.
 
 The UI skill synthesis was particularly informed by public descriptions and patterns from Baseline UI and Fixing Accessibility by Ibelick, Frontend Design by Anthropic, Interface Design by Dammyjay93, Impeccable and its focused modes by Paul Bakaus, plus framework, browser-testing, performance, motion, and accessibility entries cataloged by UI Skills. Full links and adaptation notes are in `skills/engineering/ui-design-engineering/references/credits.md`.
 

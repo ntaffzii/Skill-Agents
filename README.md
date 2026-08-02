@@ -182,6 +182,7 @@ Skill-Agents/
 - `productivity/` - handoff, prompt improvement, reports, automation, inbox triage
 - `obsidian/` - Markdown, Canvas, vault workflow, Notion bridge
 - `misc/` - skill and MCP tool management
+- `thai/` - Thai-locale domain knowledge (tax invoices, government letters, PDPA, ID/PromptPay validation, dates, translation, resumes) - roadmap, see `skills/thai/SKILL.md`
 - `personal/` - private/personal preferences and daily-agent workflow
 - `in-progress/` - draft skills
 - `deprecated/` - retired skills with replacement guidance
