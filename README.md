@@ -178,7 +178,7 @@ Skill-Agents/
 ## Skill Categories
 
 - `engineering/` - diagnose, TDD, code review, architecture review
-- `research/` - news, GitHub skill research, project discovery, claim/citation integrity check
+- `research/` - news, GitHub skill research, project discovery, claim/citation integrity check, repo-tour (guided tour/onboarding/diff-impact over an existing graphify graph)
 - `productivity/` - handoff, prompt improvement, reports, automation, inbox triage
 - `obsidian/` - Markdown, Canvas, vault workflow, Notion bridge
 - `misc/` - skill and MCP tool management

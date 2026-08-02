@@ -270,6 +270,15 @@
         "root":  "skills"
     },
     {
+        "id":  "repo-tour",
+        "category":  "research",
+        "role":  "skill",
+        "tier":  "validator",
+        "path":  "skills/research/repo-tour/SKILL.md",
+        "description":  "Use after graphify has already built graphify-out/graph.json for a project, to generate a dependency-ordered guided tour, an onboarding doc for new team members, or a diff-impact analysis before a commit/PR โ€” reading the existing graph instead of re-scanning the repo. Trigger on \"onboarding guide\", \"เน€เธญเธเธชเธฒเธฃเธชเธณเธซเธฃเธฑเธเธ—เธตเธกเนเธซเธกเน\", \"guided tour เธเธญเธเนเธเนเธ”\", \"diff impact\", \"เธญเธเธดเธเธฒเธข repo เนเธซเนเธ—เธตเธกเนเธซเธกเน\", \"what does this change affect\", when graphify-out/graph.json already exists. If graphify-out/graph.json does NOT exist yet, tell the user to run graphify first โ€” this skill does not scan or build a graph itself.",
+        "root":  "skills"
+    },
+    {
         "id":  "thai",
         "category":  "thai",
         "role":  "category-index",
