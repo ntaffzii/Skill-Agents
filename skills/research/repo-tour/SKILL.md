@@ -11,6 +11,8 @@ description: Use after graphify has already built graphify-out/graph.json for a 
 
 **Fast-path rule (check this first, every time)**: if `graphify-out/graph.json` does not exist, **stop and tell the user to run `graphify` first** (`/graphify` or the graphify skill). Do not fall back to reading files manually — that's `project-discovery`'s job, not this skill's.
 
+**Cost note before suggesting a graphify run**: `repo-tour` itself makes no LLM calls and costs nothing to run. Building the graph in the first place is not free, though — graphify's semantic extraction pass (anything that isn't code: `.md`, `.pdf`, images) dispatches an LLM subagent per ~20-25 files, and a real test run in this repo (10 small Markdown files) used **~116k output tokens** for that one pass. If no graph exists yet and the corpus is doc-heavy or large, say so explicitly and let the user decide whether to scope the graphify run narrower (a subdirectory, not the whole repo) rather than defaulting to a full-repo build. For a genuine one-off "explain this to me" question with no existing graph and no repeat use planned, `project-discovery` is usually cheaper — `repo-tour`'s value shows up when a graph already exists (regular graphify use) or the same graph gets reused across multiple onboarding/diff-impact checks, not on a single cold-start question.
+
 ## When to use
 
 - สร้างเอกสาร onboarding สำหรับทีมใหม่ จากกราฟที่ graphify สร้างไว้แล้ว
