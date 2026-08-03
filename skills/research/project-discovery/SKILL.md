@@ -14,7 +14,7 @@ Build a practical understanding of a project before proposing or making changes.
 
 2. Inspect high-signal files
    - Read `README.md`, project instructions, package manifests, lockfiles, docs, architecture notes, CI config, test config, and main entry points.
-   - Prefer actual files over guesses.
+   - Prefer actual files over guesses — the [research-methodology](../research-methodology/SKILL.md) source-tier idea applies here too: a file in the repo outranks a README's description of what the repo does, which outranks an outside blog post about the project.
 
 3. Map the system
    - Identify core modules, data flow, user-facing surfaces, external services, build commands, test commands, deployment hints, and local conventions.

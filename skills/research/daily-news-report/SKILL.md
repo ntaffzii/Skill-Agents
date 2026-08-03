@@ -18,7 +18,7 @@ Create a high-signal Markdown briefing from current, sourced information.
    - Use recent reputable sources.
    - Prefer primary reporting, official statements, regulator pages, company announcements, and established newsrooms.
    - Prioritize the last 24 hours unless the user requests a broader window.
-   - Cross-check major claims when possible.
+   - Cross-check major claims when possible — see [research-methodology](../research-methodology/SKILL.md) for source-tiering and telling real corroboration apart from several outlets repeating one wire story.
 
 3. Filter and rank
    - Keep only items that are significant, new, and useful.
@@ -35,6 +35,7 @@ Create a high-signal Markdown briefing from current, sourced information.
    - Confirm every major claim has a source.
    - Mark uncertain or developing items clearly.
    - Separate fact from inference.
+   - Run [claim-citation-check](../claim-citation-check/SKILL.md) before finalizing — it catches uncited factual sentences that slipped through.
 
 ## Output Format
 
