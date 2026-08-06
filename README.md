@@ -78,28 +78,65 @@ ai-desk-tools/server.py
 
 ## Install Skills
 
-If your agent supports `npx skills`:
+### Automatic Sync Tool (Recommended)
 
-```bash
-npx skills add ntaffzii/Skill-Agents
-```
+This repo includes a built-in sync script that copies skills to your AI providers automatically.
 
-Manual install for Codex-style skills:
-
-```bash
-cp -R skills/* ~/.codex/skills/
-```
-
-Manual install for Claude Code-style skills:
-
-```bash
-cp -R skills/* ~/.claude/skills/
-```
-
-On Windows PowerShell, adjust the target path:
+Run in PowerShell from the repo root:
 
 ```powershell
-Copy-Item -Recurse .\skills\* "$env:USERPROFILE\.codex\skills\"
+.\sync
+```
+
+The tool shows a 2-step interactive menu:
+
+1. Choose which skill(s) to sync (or press Enter for all)
+2. Choose the target AI Provider:
+
+| Key | Provider | Install Path |
+|---|---|---|
+| A | All providers | — |
+| 1 | Antigravity IDE | `~/.gemini/config/skills/` |
+| 2 | Claude Code | `~/.claude/skills/` |
+| 3 | OpenCode Interpreter | `~/.opencode/skills/` |
+
+One-liner to sync a specific skill to a specific provider:
+
+```powershell
+# Sync all skills to Antigravity IDE
+.\sync thai antigravity
+
+# Sync trading skill to Claude Code only
+.\sync trading claude
+
+# Sync all skills to all providers
+.\sync
+```
+
+Full usage guide: [docs/SYNC_SKILLS_GUIDE.md](docs/SYNC_SKILLS_GUIDE.md)
+
+---
+
+### Manual Install
+
+If you prefer to copy files manually:
+
+```bash
+# Claude Code
+cp -R skills/* ~/.claude/skills/
+
+# Antigravity IDE
+cp -R skills/* ~/.gemini/config/skills/
+```
+
+On Windows PowerShell:
+
+```powershell
+# Antigravity IDE
+Copy-Item -Recurse .\skills\* "$env:USERPROFILE\.gemini\config\skills\"
+
+# Claude Code
+Copy-Item -Recurse .\skills\* "$env:USERPROFILE\.claude\skills\"
 ```
 
 ## Local LLM Usage
@@ -233,17 +270,34 @@ Use skill-runtime first. Route this request, improve it only if unclear, then lo
 
 ## Documentation
 
+### Getting Started
+
 - [QUICKSTART.md](QUICKSTART.md)
+- [docs/ONBOARDING.md](docs/ONBOARDING.md)
 - [docs/PROJECT_GUIDE.md](docs/PROJECT_GUIDE.md)
 - [docs/USAGE_FOR_PERSONAL_AND_OTHERS.md](docs/USAGE_FOR_PERSONAL_AND_OTHERS.md)
+
+### Skills
+
+- [docs/SYNC_SKILLS_GUIDE.md](docs/SYNC_SKILLS_GUIDE.md) — sync skills to AI providers (Antigravity, Claude, OpenCode)
+- [docs/NEW_SKILLS_GUIDE.md](docs/NEW_SKILLS_GUIDE.md) — guide to recently added skills
 - [docs/SKILL_RUNTIME_FLOW.md](docs/SKILL_RUNTIME_FLOW.md)
+- [docs/TOUR.md](docs/TOUR.md)
+
+### Configuration & Setup
+
+- [docs/CONFIG_JSON_GUIDE.md](docs/CONFIG_JSON_GUIDE.md)
 - [docs/LOCAL_LLM_SETTINGS.md](docs/LOCAL_LLM_SETTINGS.md)
 - [docs/PROMPT_IMPROVER_LOCAL_MODEL.md](docs/PROMPT_IMPROVER_LOCAL_MODEL.md)
-- [docs/CONFIG_JSON_GUIDE.md](docs/CONFIG_JSON_GUIDE.md)
+- [docs/COMPLETE_LOCAL_AI_SYSTEM.md](docs/COMPLETE_LOCAL_AI_SYSTEM.md)
+
+### Tools & Integrations
+
 - [docs/TOOLS_INVENTORY.md](docs/TOOLS_INVENTORY.md)
 - [docs/MCP_API_SERVER.md](docs/MCP_API_SERVER.md)
 - [docs/WEB_CAPTURE_PROVIDERS.md](docs/WEB_CAPTURE_PROVIDERS.md)
 - [docs/FINANCE_MARKET_PROVIDERS.md](docs/FINANCE_MARKET_PROVIDERS.md)
+- [docs/RECOMMENDED_NEXT_TOOLS.md](docs/RECOMMENDED_NEXT_TOOLS.md)
 - [NOTICE.md](NOTICE.md)
 
 ## Validate
