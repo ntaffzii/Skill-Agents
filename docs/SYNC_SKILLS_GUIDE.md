@@ -7,7 +7,7 @@
 ## สกิลถูกนำไปวางที่ไหน?
 
 | AI Provider | Global Path |
-|---|---|
+| :-- | :-- |
 | **Antigravity IDE** | `~/.gemini/config/skills/<ชื่อสกิล>/` |
 | **Claude Code (CLI)** | `~/.claude/skills/<ชื่อสกิล>/` |
 | **OpenCode Interpreter** | `~/.opencode/skills/<ชื่อสกิล>/` |
@@ -18,7 +18,7 @@
 
 ## ไฟล์ที่เกี่ยวข้อง
 
-```
+```text
 skill-agents/
 ├── sync.bat              ← ทางลัดสำหรับ Windows Command Prompt
 ├── sync.ps1              ← ทางลัดสำหรับ PowerShell
@@ -40,7 +40,7 @@ skill-agents/
 
 ระบบจะแสดงเมนู **2 ขั้นตอน** ให้เลือกแบบโต้ตอบ:
 
-```
+```text
 =======================================================
  🛠️  โปรแกรมซิงค์ Skill ไปยัง AI Providers (Interactive)
 =======================================================
@@ -74,6 +74,7 @@ skill-agents/
 ```
 
 **ตัวอย่าง:**
+
 ```powershell
 .\sync thai
 .\sync trading
@@ -93,6 +94,7 @@ skill-agents/
 **ชื่อ Provider ที่รองรับ:** `antigravity`, `claude`, `opencode`
 
 **ตัวอย่าง:**
+
 ```powershell
 # ส่งสกิล thai ไปแค่ Antigravity IDE เท่านั้น
 .\sync thai antigravity
@@ -126,7 +128,7 @@ python scripts/sync_skills.py trading -p claude
 
 ## ตัวอย่างผลลัพธ์เมื่อทำงานสำเร็จ
 
-```
+```text
 🚀 กำลังส่งโฟลเดอร์ Skill: [thai] ...
   ✅ [สำเร็จ] Antigravity IDE        -> C:\Users\natth\.gemini\config\skills\thai
   ✅ [สำเร็จ] Claude Code            -> C:\Users\natth\.claude\skills\thai
@@ -139,16 +141,21 @@ python scripts/sync_skills.py trading -p claude
 ## คำถามที่พบบ่อย (FAQ)
 
 ### Q: ถ้ารันซ้ำจะเกิดอะไรขึ้น?
+
 A: สคริปต์จะ**ลบโฟลเดอร์สกิลเก่าออกแล้วคัดลอกใหม่ทั้งหมด** ทุกครั้งที่รัน — ใช้ได้อย่างปลอดภัย ไม่มีการซ้อนทับหรือข้อมูลค้างเก่า
 
 ### Q: ถ้า Provider ยังไม่ได้ติดตั้ง จะเกิดอะไรขึ้น?
+
 A: สคริปต์จะ**สร้างโฟลเดอร์ให้อัตโนมัติ** แม้ว่า Provider นั้นจะยังไม่ได้ติดตั้งในเครื่อง — ไม่มี Error
 
 ### Q: สกิลที่อยู่ในโฟลเดอร์ `skills/` แต่ไม่มี `SKILL.md` จะถูกซิงค์ไหม?
+
 A: สคริปต์คัดลอกทั้งโฟลเดอร์ ไม่ว่าจะมี `SKILL.md` หรือไม่ — แต่ AI Provider ส่วนใหญ่จะ**ตรวจพบเฉพาะโฟลเดอร์ที่มี `SKILL.md` และ YAML Frontmatter ครบถ้วน** เท่านั้น
 
 ### Q: ต้องการเพิ่ม Provider ใหม่ได้ไหม?
+
 A: ได้ครับ — แก้ไข `PROVIDERS_MAP` ในไฟล์ `scripts/sync_skills.py` โดยเพิ่ม entry ใหม่:
+
 ```python
 PROVIDERS_MAP = {
     ...
@@ -161,7 +168,7 @@ PROVIDERS_MAP = {
 ## ไฟล์ที่เกี่ยวข้องในโปรเจกต์
 
 | ไฟล์ | คำอธิบาย |
-|---|---|
+| :-- | :-- |
 | [sync.bat](../sync.bat) | ทางลัดรันบน Windows CMD |
 | [sync.ps1](../sync.ps1) | ทางลัดรันบน PowerShell |
 | [scripts/sync_skills.py](../scripts/sync_skills.py) | สคริปต์หลัก Python |

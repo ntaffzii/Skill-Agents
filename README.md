@@ -94,7 +94,7 @@ The tool shows a 2-step interactive menu:
 2. Choose the target AI Provider:
 
 | Key | Provider | Install Path |
-|---|---|---|
+| :-- | :-- | :-- |
 | A | All providers | — |
 | 1 | Antigravity IDE | `~/.gemini/config/skills/` |
 | 2 | Claude Code | `~/.claude/skills/` |
