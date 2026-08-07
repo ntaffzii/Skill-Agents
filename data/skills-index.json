@@ -234,6 +234,15 @@
         "root":  "skills"
     },
     {
+        "id":  "project-docs-prep",
+        "category":  "project-docs-prep",
+        "role":  "category-index",
+        "tier":  "prose",
+        "path":  "skills/project-docs-prep/SKILL.md",
+        "description":  "Use this skill whenever the user wants to prepare or scaffold documentation for a new (or existing) software project before handing it to an AI coding agent — for example when they ask to \"set up project docs\", \"write a project spec\", \"prepare AGENTS.md\", \"prepare DESIGN.md\", \"เตรียมเอกสารโปรเจกต์\", \"เริ่มโปรเจกต์ใหม่ให้ AI เขียนโค้ด\", or describe a project idea and want it turned into proper docs. Also trigger when the user wants a full docs/ folder (numbered specs — project overview, system requirements, tech stack & architecture, system modeling, UX/UI design) plus root-level agent-facing files (AGENTS.md, DESIGN.md, CLAUDE.md, README.md). Trigger even if the user only gives an informal one-line project idea and doesn't name any file explicitly — this skill's job is to turn that idea into the full documentation set. Also use when the user wants to review or upgrade an existing project's docs to be \"AI-agent ready\".",
+        "root":  "skills"
+    },
+    {
         "id":  "claim-citation-check",
         "category":  "research",
         "role":  "skill",

@@ -217,6 +217,7 @@ Skill-Agents/
 - `engineering/` - diagnose, TDD, code review, architecture review
 - `research/` - news, GitHub skill research, project discovery, claim/citation integrity check, repo-tour (guided tour/onboarding/diff-impact over an existing graphify graph)
 - `productivity/` - handoff, prompt improvement, reports, automation, inbox triage
+- `project-docs-prep/` - scaffold AI-agent-ready project documentation (5 numbered specs + AGENTS.md, DESIGN.md, CLAUDE.md, README.md)
 - `obsidian/` - Markdown, Canvas, vault workflow, Notion bridge
 - `misc/` - skill and MCP tool management
 - `thai/` - Thai-locale domain knowledge (tax invoices, government letters, PDPA, ID/PromptPay validation, dates, translation, resumes) - see `skills/thai/SKILL.md`
