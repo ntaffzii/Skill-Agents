@@ -22,7 +22,11 @@ function Get-SkillEntries {
     $skillFiles = Get-ChildItem -Path $Root -Recurse -Filter "SKILL.md" -File
 
     foreach ($file in $skillFiles) {
-        $content = Get-Content -Path $file.FullName -Raw
+        # Read as UTF-8 explicitly. Get-Content -Raw defaults to the system code
+        # page on Windows PowerShell, which mojibake-encodes non-ASCII frontmatter
+        # (e.g. Thai trigger phrases). ReadAllText with UTF-8 is code-page-proof
+        # and strips a BOM if present.
+        $content = [System.IO.File]::ReadAllText($file.FullName, [System.Text.Encoding]::UTF8)
         $name = if ($content -match '(?m)^name:\s*(.+)$') { $Matches[1].Trim() } else { $null }
         $description = if ($content -match '(?m)^description:\s*(.+)$') { $Matches[1].Trim().Trim('"') } else { $null }
 

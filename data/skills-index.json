@@ -90,6 +90,15 @@
         "root":  "skills"
     },
     {
+        "id":  "ux-ui-design-assessment",
+        "category":  "engineering",
+        "role":  "skill",
+        "tier":  "prose",
+        "path":  "skills/engineering/ux-ui-design-assessment/SKILL.md",
+        "description":  "Analyze and document the UX/UI of a project against the full UX/UI body of knowledge, or design the UX/UI for a new project from scratch. Use when the user wants to know \"how is this project\u0027s UX/UI\", to audit/review/evaluate an existing interface, to produce a UX/UI assessment report, or to design UX/UI for a new product (personas, empathy maps, information architecture, wireframe/prototype plan, color and typography, responsive strategy, moodboard, usability test plan). Triggers include \"วิเคราะห์ UX/UI\", \"สแกน UI ของโปรเจกต์\", \"ออกแบบ UX/UI\", \"เขียนเอกสาร UX/UI\", \"audit the UI\", \"evaluate UX\", \"UX/UI ของโปรเจกต์นี้เป็นอย่างไร\", \"design the UX for a new app\". Produces a written file (UX-UI-ASSESSMENT.md or UX-UI-DESIGN-DOC.md). This skill documents and plans; it hands code implementation to the companion `ui-design-engineering` skill.",
+        "root":  "skills"
+    },
+    {
         "id":  "in-progress",
         "category":  "in-progress",
         "role":  "category-index",
@@ -239,7 +248,7 @@
         "role":  "category-index",
         "tier":  "prose",
         "path":  "skills/project-docs-prep/SKILL.md",
-        "description":  "Use this skill whenever the user wants to prepare or scaffold documentation for a new (or existing) software project before handing it to an AI coding agent — for example when they ask to \"set up project docs\", \"write a project spec\", \"prepare AGENTS.md\", \"prepare DESIGN.md\", \"เตรียมเอกสารโปรเจกต์\", \"เริ่มโปรเจกต์ใหม่ให้ AI เขียนโค้ด\", or describe a project idea and want it turned into proper docs. Also trigger when the user wants a full docs/ folder (numbered specs — project overview, system requirements, tech stack & architecture, system modeling, UX/UI design) plus root-level agent-facing files (AGENTS.md, DESIGN.md, CLAUDE.md, README.md). Trigger even if the user only gives an informal one-line project idea and doesn't name any file explicitly — this skill's job is to turn that idea into the full documentation set. Also use when the user wants to review or upgrade an existing project's docs to be \"AI-agent ready\".",
+        "description":  "Use this skill whenever the user wants to prepare or scaffold documentation for a new (or existing) software project before handing it to an AI coding agent — for example when they ask to \"set up project docs\", \"write a project spec\", \"prepare AGENTS.md\", \"prepare DESIGN.md\", \"เตรียมเอกสารโปรเจกต์\", \"เริ่มโปรเจกต์ใหม่ให้ AI เขียนโค้ด\", or describe a project idea and want it turned into proper docs. Also trigger when the user wants a full docs/ folder (numbered specs — project overview, system requirements, tech stack \u0026 architecture, system modeling, UX/UI design) plus root-level agent-facing files (AGENTS.md, DESIGN.md, CLAUDE.md, README.md). Trigger even if the user only gives an informal one-line project idea and doesn\u0027t name any file explicitly — this skill\u0027s job is to turn that idea into the full documentation set. Also use when the user wants to review or upgrade an existing project\u0027s docs to be \"AI-agent ready\".",
         "root":  "skills"
     },
     {
@@ -248,7 +257,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/research/claim-citation-check/SKILL.md",
-        "description":  "Use this skill before finalizing any research output, report, or summary that contains citations, statistics, or specific factual claims โ€” to verify each citation actually exists, actually supports the claim it\u0027s attached to, and that no uncited sentence is quietly asserting a specific fact. Trigger on \"check my citations\", \"verify sources\", \"fact check this\", \"did I cite this correctly\", or automatically as a pre-finalization step for daily-news-report, github-skill-research, project-discovery, or any research summary with sourced claims.",
+        "description":  "Use this skill before finalizing any research output, report, or summary that contains citations, statistics, or specific factual claims — to verify each citation actually exists, actually supports the claim it\u0027s attached to, and that no uncited sentence is quietly asserting a specific fact. Trigger on \"check my citations\", \"verify sources\", \"fact check this\", \"did I cite this correctly\", or automatically as a pre-finalization step for daily-news-report, github-skill-research, project-discovery, or any research summary with sourced claims.",
         "root":  "skills"
     },
     {
@@ -284,7 +293,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/research/repo-tour/SKILL.md",
-        "description":  "Use after graphify has already built graphify-out/graph.json for a project, to generate a dependency-ordered guided tour, an onboarding doc for new team members, or a diff-impact analysis before a commit/PR โ€” reading the existing graph instead of re-scanning the repo. Trigger on \"onboarding guide\", \"เน€เธญเธเธชเธฒเธฃเธชเธณเธซเธฃเธฑเธเธ—เธตเธกเนเธซเธกเน\", \"guided tour เธเธญเธเนเธเนเธ”\", \"diff impact\", \"เธญเธเธดเธเธฒเธข repo เนเธซเนเธ—เธตเธกเนเธซเธกเน\", \"what does this change affect\", when graphify-out/graph.json already exists. If graphify-out/graph.json does NOT exist yet, tell the user to run graphify first โ€” this skill does not scan or build a graph itself.",
+        "description":  "Use after graphify has already built graphify-out/graph.json for a project, to generate a dependency-ordered guided tour, an onboarding doc for new team members, or a diff-impact analysis before a commit/PR — reading the existing graph instead of re-scanning the repo. Trigger on \"onboarding guide\", \"เอกสารสำหรับทีมใหม่\", \"guided tour ของโค้ด\", \"diff impact\", \"อธิบาย repo ให้ทีมใหม่\", \"what does this change affect\", when graphify-out/graph.json already exists. If graphify-out/graph.json does NOT exist yet, tell the user to run graphify first — this skill does not scan or build a graph itself.",
         "root":  "skills"
     },
     {
@@ -293,7 +302,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/research/research-methodology/SKILL.md",
-        "description":  "Use this skill as a pre-search discipline before running daily-news-report, github-skill-research, project-discovery, or any research task with multiple sources โ€” frame the question, decide source-quality tiers, track what was checked vs. skipped, and separate \"one source claims this\" from \"multiple independent sources agree.\" Trigger on \"research this properly\", \"systematic search\", \"เธญเธขเธฒเธเนเธ”เนเธเนเธญเธกเธนเธฅเธ—เธตเนเธเธฃเธเธเธฃเธดเธ\", \"don\u0027t just take the first result\", or automatically whenever a research skill is about to start searching. Pairs with claim-citation-check as the finalization-side check; this is the search-side discipline.",
+        "description":  "Use this skill as a pre-search discipline before running daily-news-report, github-skill-research, project-discovery, or any research task with multiple sources — frame the question, decide source-quality tiers, track what was checked vs. skipped, and separate \"one source claims this\" from \"multiple independent sources agree.\" Trigger on \"research this properly\", \"systematic search\", \"อยากได้ข้อมูลที่ครบจริง\", \"don\u0027t just take the first result\", or automatically whenever a research skill is about to start searching. Pairs with claim-citation-check as the finalization-side check; this is the search-side discipline.",
         "root":  "skills"
     },
     {
@@ -302,7 +311,7 @@
         "role":  "category-index",
         "tier":  "prose",
         "path":  "skills/thai/SKILL.md",
-        "description":  "Route and manage Thai-locale domain-knowledge skills โ€” Thai tax documents, government letters, PDPA notices, national ID/PromptPay validation, BE/CE date conversion, addresses, social captions, customer-service replies, resumes, and translation. Use when the user asks for Thai-specific documents, formats, or validations that a general-purpose agent tends to get wrong, such as VAT/WHT math, เธ.เธจ./เธ.เธจ. date conversion, national ID checksum, or register-aware EN-TH translation.",
+        "description":  "Route and manage Thai-locale domain-knowledge skills — Thai tax documents, government letters, PDPA notices, national ID/PromptPay validation, BE/CE date conversion, addresses, social captions, customer-service replies, resumes, and translation. Use when the user asks for Thai-specific documents, formats, or validations that a general-purpose agent tends to get wrong, such as VAT/WHT math, พ.ศ./ค.ศ. date conversion, national ID checksum, or register-aware EN-TH translation.",
         "root":  "skills"
     },
     {
@@ -311,7 +320,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/thai/thai-address/SKILL.md",
-        "description":  "Use this skill for any task parsing a Thai address into its components (เธ•เธณเธเธฅ/เนเธเธงเธ, เธญเธณเน€เธ เธญ/เน€เธเธ•, เธเธฑเธเธซเธงเธฑเธ”, เธฃเธซเธฑเธชเนเธเธฃเธฉเธ“เธตเธขเน) or looking up a province from a postal code or name. Trigger on \"เนเธขเธเธ—เธตเนเธญเธขเธนเน\", \"เธ—เธตเนเธญเธขเธนเนเนเธ—เธข\", \"เธฃเธซเธฑเธชเนเธเธฃเธฉเธ“เธตเธขเน\", \"เธเธฑเธเธซเธงเธฑเธ”เธญเธฐเนเธฃ\", \"Thai address parse\", \"postal code to province\". If the address is already cleanly split into labeled fields (e.g. a form with separate province/district inputs), this skill\u0027s lookup table is still useful but the parsing half is unnecessary.",
+        "description":  "Use this skill for any task parsing a Thai address into its components (ตำบล/แขวง, อำเภอ/เขต, จังหวัด, รหัสไปรษณีย์) or looking up a province from a postal code or name. Trigger on \"แยกที่อยู่\", \"ที่อยู่ไทย\", \"รหัสไปรษณีย์\", \"จังหวัดอะไร\", \"Thai address parse\", \"postal code to province\". If the address is already cleanly split into labeled fields (e.g. a form with separate province/district inputs), this skill\u0027s lookup table is still useful but the parsing half is unnecessary.",
         "root":  "skills"
     },
     {
@@ -320,7 +329,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-customer-service/SKILL.md",
-        "description":  "Use this skill for any task drafting a Thai-language customer-service reply โ€” apologies, status updates, refund/return scripts, or auto-replies for LINE OA, Facebook Page, Shopee, Lazada, Instagram DM, TikTok Shop, or similar channels. Trigger on \"reply เธฅเธนเธเธเนเธฒ\", \"เธ•เธญเธเนเธเธ—\", \"LINE OA\", \"Shopee เธ•เธญเธเธฅเธนเธเธเนเธฒ\", \"เธเธญเนเธ—เธฉเธฅเธนเธเธเนเธฒ\", \"refund script\", \"customer service Thai\". If the message is internal (to a colleague, not a customer), this skill\u0027s apology-ladder register doesn\u0027t apply โ€” use plain professional Thai instead.",
+        "description":  "Use this skill for any task drafting a Thai-language customer-service reply — apologies, status updates, refund/return scripts, or auto-replies for LINE OA, Facebook Page, Shopee, Lazada, Instagram DM, TikTok Shop, or similar channels. Trigger on \"reply ลูกค้า\", \"ตอบแชท\", \"LINE OA\", \"Shopee ตอบลูกค้า\", \"ขอโทษลูกค้า\", \"refund script\", \"customer service Thai\". If the message is internal (to a colleague, not a customer), this skill\u0027s apology-ladder register doesn\u0027t apply — use plain professional Thai instead.",
         "root":  "skills"
     },
     {
@@ -329,7 +338,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/thai/thai-date-format/SKILL.md",
-        "description":  "Use this skill for any task converting between Buddhist Era (เธ.เธจ.) and Common Era (เธ.เธจ.) years, or formatting a date the way a Thai document, business, or casual context expects. Trigger on \"เนเธเธฅเธเธเธต เธ.เธจ.\", \"เนเธเธฅเธ เธ.เธจ.\", \"เธงเธฑเธเธ—เธตเนเนเธเธเนเธ—เธข\", \"เธงเธฑเธเธ—เธตเนเธฃเธฒเธเธเธฒเธฃ\", \"เน€เธฅเธเนเธ—เธข\", \"Thai date\", \"BE to CE\", \"Buddhist Era\", or any date that mixes a 4-digit year starting with 25xx with a request to write or read it in Thai. If the task is just generic date-string formatting with no Thai era or numeral involved, plain ISO/locale formatting is enough โ€” this skill is not needed.",
+        "description":  "Use this skill for any task converting between Buddhist Era (พ.ศ.) and Common Era (ค.ศ.) years, or formatting a date the way a Thai document, business, or casual context expects. Trigger on \"แปลงปี พ.ศ.\", \"แปลง ค.ศ.\", \"วันที่แบบไทย\", \"วันที่ราชการ\", \"เลขไทย\", \"Thai date\", \"BE to CE\", \"Buddhist Era\", or any date that mixes a 4-digit year starting with 25xx with a request to write or read it in Thai. If the task is just generic date-string formatting with no Thai era or numeral involved, plain ISO/locale formatting is enough — this skill is not needed.",
         "root":  "skills"
     },
     {
@@ -338,7 +347,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-festival-card/SKILL.md",
-        "description":  "Use this skill for any task writing a Thai festival greeting (New Year, Songkran, Loy Krathong), a condolence message (เธเธณเนเธงเนเธญเธฒเธฅเธฑเธข), or a wedding card, and for checking taboo numbers, colors, or gifts in a Thai cultural context. Trigger on \"เธญเธงเธขเธเธฃเธเธตเนเธซเธกเน\", \"เธเธฒเธฃเนเธ”เธชเธเธเธฃเธฒเธเธ•เน\", \"เธเธฒเธฃเนเธ”เธฅเธญเธขเธเธฃเธฐเธ—เธ\", \"เธเธณเนเธงเนเธญเธฒเธฅเธฑเธข\", \"เธเธฒเธฃเนเธ”เนเธ•เนเธเธเธฒเธ\", \"เธเธญเธเธเธงเธฑเธเธซเนเธฒเธกเนเธซเน\", \"Thai New Year greeting\", \"Songkran card\", \"condolence message Thai\". If the greeting is entirely secular/generic with no Thai cultural reference points needed, plain translation is enough.",
+        "description":  "Use this skill for any task writing a Thai festival greeting (New Year, Songkran, Loy Krathong), a condolence message (คำไว้อาลัย), or a wedding card, and for checking taboo numbers, colors, or gifts in a Thai cultural context. Trigger on \"อวยพรปีใหม่\", \"การ์ดสงกรานต์\", \"การ์ดลอยกระทง\", \"คำไว้อาลัย\", \"การ์ดแต่งงาน\", \"ของขวัญห้ามให้\", \"Thai New Year greeting\", \"Songkran card\", \"condolence message Thai\". If the greeting is entirely secular/generic with no Thai cultural reference points needed, plain translation is enough.",
         "root":  "skills"
     },
     {
@@ -347,7 +356,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-government-form/SKILL.md",
-        "description":  "Use this skill for any task drafting a Thai official letter (เธซเธเธฑเธเธชเธทเธญเธฃเธฒเธเธเธฒเธฃ), leave request (เนเธเธฅเธฒ), or power of attorney (เธซเธเธฑเธเธชเธทเธญเธกเธญเธเธญเธณเธเธฒเธ). Trigger on \"เธซเธเธฑเธเธชเธทเธญเธฃเธฒเธเธเธฒเธฃ\", \"เน€เธเธตเธขเธเธซเธเธฑเธเธชเธทเธญเธ–เธถเธ\", \"เนเธเธฅเธฒเธเนเธงเธข\", \"เนเธเธฅเธฒเธเธดเธ\", \"เนเธเธฅเธฒเธเธฑเธเธเนเธญเธ\", \"เธซเธเธฑเธเธชเธทเธญเธกเธญเธเธญเธณเธเธฒเธ\", \"official letter Thai government\", \"leave request Thai\", \"power of attorney Thai\". If the letter is informal/personal correspondence with no organizational hierarchy involved, plain [thai-translate](../thai-translate/SKILL.md)-style writing is enough โ€” this skill is specifically for the structured, hierarchy-aware government/office document format.",
+        "description":  "Use this skill for any task drafting a Thai official letter (หนังสือราชการ), leave request (ใบลา), or power of attorney (หนังสือมอบอำนาจ). Trigger on \"หนังสือราชการ\", \"เขียนหนังสือถึง\", \"ใบลาป่วย\", \"ใบลากิจ\", \"ใบลาพักผ่อน\", \"หนังสือมอบอำนาจ\", \"official letter Thai government\", \"leave request Thai\", \"power of attorney Thai\". If the letter is informal/personal correspondence with no organizational hierarchy involved, plain [thai-translate](../thai-translate/SKILL.md)-style writing is enough — this skill is specifically for the structured, hierarchy-aware government/office document format.",
         "root":  "skills"
     },
     {
@@ -356,7 +365,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/thai/thai-id-validate/SKILL.md",
-        "description":  "Use this skill for any task validating a Thai national ID or tax ID checksum, normalizing a Thai phone number, or generating a PromptPay QR code payload. Trigger on \"เน€เธฅเธเธเธฑเธ•เธฃเธเธฃเธฐเธเธฒเธเธ\", \"เน€เธฅเธเธเธฃเธฐเธเธณเธ•เธฑเธงเธเธนเนเน€เธชเธตเธขเธ เธฒเธฉเธต\", \"checksum เธเธฑเธ•เธฃเธเธฃเธฐเธเธฒเธเธ\", \"PromptPay QR\", \"เธชเธฃเนเธฒเธ QR เธเธฃเนเธญเธกเน€เธเธขเน\", \"Thai national ID validate\", \"13 digit ID checksum\". If the task only needs a regex length check with no checksum or QR generation, this skill is still the right one to load โ€” a naive 13-digit regex is exactly the mistake this skill exists to prevent.",
+        "description":  "Use this skill for any task validating a Thai national ID or tax ID checksum, normalizing a Thai phone number, or generating a PromptPay QR code payload. Trigger on \"เลขบัตรประชาชน\", \"เลขประจำตัวผู้เสียภาษี\", \"checksum บัตรประชาชน\", \"PromptPay QR\", \"สร้าง QR พร้อมเพย์\", \"Thai national ID validate\", \"13 digit ID checksum\". If the task only needs a regex length check with no checksum or QR generation, this skill is still the right one to load — a naive 13-digit regex is exactly the mistake this skill exists to prevent.",
         "root":  "skills"
     },
     {
@@ -365,7 +374,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/thai/thai-invoice/SKILL.md",
-        "description":  "Use this skill for any task involving Thai tax invoices, receipts, quotations, credit/debit notes, or withholding-tax (WHT) certificates. Trigger on \"เธญเธญเธเนเธเธเธณเธเธฑเธเธ เธฒเธฉเธต\", \"เนเธเน€เธชเธฃเนเธ\", \"เนเธเน€เธชเธเธญเธฃเธฒเธเธฒ\", \"เนเธเธฅเธ”เธซเธเธตเน\", \"เนเธเน€เธเธดเนเธกเธซเธเธตเน\", \"เธซเธเธฑเธเธชเธทเธญเธฃเธฑเธเธฃเธญเธเธซเธฑเธเธ เธฒเธฉเธต เธ“ เธ—เธตเนเธเนเธฒเธข\", \"เธ .เธ.เธ”.3\", \"เธ .เธ.เธ”.53\", \"Thai tax invoice\", \"VAT 7%\", \"withholding tax Thailand\", or any request to draft or calculate a Thai accounting document under Revenue Code ยง86/4. If the task is bookkeeping-level aggregation across many invoices (filing เธ .เธ.30, reconciling a ledger), this skill drafts the source document only โ€” direct the user to their accounting system or accountant for the return itself.",
+        "description":  "Use this skill for any task involving Thai tax invoices, receipts, quotations, credit/debit notes, or withholding-tax (WHT) certificates. Trigger on \"ออกใบกำกับภาษี\", \"ใบเสร็จ\", \"ใบเสนอราคา\", \"ใบลดหนี้\", \"ใบเพิ่มหนี้\", \"หนังสือรับรองหักภาษี ณ ที่จ่าย\", \"ภ.ง.ด.3\", \"ภ.ง.ด.53\", \"Thai tax invoice\", \"VAT 7%\", \"withholding tax Thailand\", or any request to draft or calculate a Thai accounting document under Revenue Code §86/4. If the task is bookkeeping-level aggregation across many invoices (filing ภ.พ.30, reconciling a ledger), this skill drafts the source document only — direct the user to their accounting system or accountant for the return itself.",
         "root":  "skills"
     },
     {
@@ -374,7 +383,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-pdpa/SKILL.md",
-        "description":  "Use this skill for any task drafting a Thai PDPA-compliant privacy notice, consent banner, or cookie consent flow. Trigger on \"PDPA\", \"เธเนเธขเธเธฒเธขเธเธงเธฒเธกเน€เธเนเธเธชเนเธงเธเธ•เธฑเธง\", \"privacy policy เนเธ—เธข\", \"consent banner\", \"cookie consent\", \"เธเธญเธเธงเธฒเธกเธขเธดเธเธขเธญเธกเธเนเธญเธกเธนเธฅเธชเนเธงเธเธเธธเธเธเธฅ\", \"เธ.เธฃ.เธ.เธเธธเนเธกเธเธฃเธญเธเธเนเธญเธกเธนเธฅเธชเนเธงเธเธเธธเธเธเธฅ\". If the request is a GDPR-only privacy notice with no Thai users/data involved, use general GDPR patterns instead โ€” do not silently apply Thai PDPA rules to a non-Thai context or vice versa; they overlap but aren\u0027t identical.",
+        "description":  "Use this skill for any task drafting a Thai PDPA-compliant privacy notice, consent banner, or cookie consent flow. Trigger on \"PDPA\", \"นโยบายความเป็นส่วนตัว\", \"privacy policy ไทย\", \"consent banner\", \"cookie consent\", \"ขอความยินยอมข้อมูลส่วนบุคคล\", \"พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล\". If the request is a GDPR-only privacy notice with no Thai users/data involved, use general GDPR patterns instead — do not silently apply Thai PDPA rules to a non-Thai context or vice versa; they overlap but aren\u0027t identical.",
         "root":  "skills"
     },
     {
@@ -383,7 +392,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-resume/SKILL.md",
-        "description":  "Use this skill for any task drafting a Thai or bilingual Thai-English resume/CV, especially for JobsDB, JobThai, or LinkedIn Thailand. Trigger on \"เน€เธเธตเธขเธเน€เธฃเธเธนเน€เธกเน\", \"resume เธ เธฒเธฉเธฒเนเธ—เธข\", \"CV เนเธ—เธข\", \"เธชเธกเธฑเธเธฃเธเธฒเธ JobsDB\", \"เธชเธกเธฑเธเธฃเธเธฒเธ JobThai\". If the target is a Western/international company outside Thailand with no Thai-market context, use standard international resume conventions instead โ€” the DOB/photo/religion fields this skill discusses are specifically a Thai-market convention, not a universal one.",
+        "description":  "Use this skill for any task drafting a Thai or bilingual Thai-English resume/CV, especially for JobsDB, JobThai, or LinkedIn Thailand. Trigger on \"เขียนเรซูเม่\", \"resume ภาษาไทย\", \"CV ไทย\", \"สมัครงาน JobsDB\", \"สมัครงาน JobThai\". If the target is a Western/international company outside Thailand with no Thai-market context, use standard international resume conventions instead — the DOB/photo/religion fields this skill discusses are specifically a Thai-market convention, not a universal one.",
         "root":  "skills"
     },
     {
@@ -392,7 +401,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-social-caption/SKILL.md",
-        "description":  "Use this skill for any task writing Thai-language social media captions or short-form copy for Facebook, TikTok, Instagram, Threads, X, or Pantip. Trigger on \"เนเธเธเธเธฑเนเธ\", \"เนเธเธเธเธฑเนเธเนเธญเธเธต\", \"เนเธเธเธเธฑเนเธเธ•เธดเนเธเธ•เนเธญเธ\", \"เนเธเธชเธ•เนเน€เธเธช\", \"เน€เธเธตเธขเธเนเธเธชเธ•เน Pantip\", \"caption เธ เธฒเธฉเธฒเนเธ—เธข\", \"Thai social media caption\". If the platform or tone isn\u0027t specified, ask or default to Facebook/Instagram conventions (the most common request) rather than guessing TikTok or Pantip\u0027s very different register.",
+        "description":  "Use this skill for any task writing Thai-language social media captions or short-form copy for Facebook, TikTok, Instagram, Threads, X, or Pantip. Trigger on \"แคปชั่น\", \"แคปชั่นไอจี\", \"แคปชั่นติ๊กต๊อก\", \"โพสต์เฟส\", \"เขียนโพสต์ Pantip\", \"caption ภาษาไทย\", \"Thai social media caption\". If the platform or tone isn\u0027t specified, ask or default to Facebook/Instagram conventions (the most common request) rather than guessing TikTok or Pantip\u0027s very different register.",
         "root":  "skills"
     },
     {
@@ -401,7 +410,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-text-processing/SKILL.md",
-        "description":  "Use this skill for any task involving Thai word segmentation/tokenization, Unicode normalization of Thai text, Thai-aware sorting/collation, or romanization (Thai script to Latin script). Trigger on \"เธ•เธฑเธ”เธเธณเธ เธฒเธฉเธฒเนเธ—เธข\", \"tokenize Thai\", \"normalize Thai text\", \"Thai collation\", \"romanize Thai\", \"RTGS\", \"PyThaiNLP\". If the task is just reading/writing Thai text without any programmatic string manipulation (segmentation, sorting, comparison), this skill isn\u0027t needed โ€” plain text handling is fine.",
+        "description":  "Use this skill for any task involving Thai word segmentation/tokenization, Unicode normalization of Thai text, Thai-aware sorting/collation, or romanization (Thai script to Latin script). Trigger on \"ตัดคำภาษาไทย\", \"tokenize Thai\", \"normalize Thai text\", \"Thai collation\", \"romanize Thai\", \"RTGS\", \"PyThaiNLP\". If the task is just reading/writing Thai text without any programmatic string manipulation (segmentation, sorting, comparison), this skill isn\u0027t needed — plain text handling is fine.",
         "root":  "skills"
     },
     {
@@ -410,7 +419,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/thai/thai-translate/SKILL.md",
-        "description":  "Use this skill for any task translating between English and Thai where tone, register, or pronoun choice matters โ€” not just literal word substitution. Trigger on \"เนเธเธฅเน€เธเนเธเนเธ—เธข\", \"เนเธเธฅเน€เธเนเธเธญเธฑเธเธเธคเธฉ\", \"translate to Thai\", \"translate to English\", \"EN-TH\", \"TH-EN\", or any translation request involving Thai. If the source text is purely technical/machine-readable (e.g. translating a JSON key, a code comment with no audience), plain literal translation is fine and this skill\u0027s register guidance doesn\u0027t apply.",
+        "description":  "Use this skill for any task translating between English and Thai where tone, register, or pronoun choice matters — not just literal word substitution. Trigger on \"แปลเป็นไทย\", \"แปลเป็นอังกฤษ\", \"translate to Thai\", \"translate to English\", \"EN-TH\", \"TH-EN\", or any translation request involving Thai. If the source text is purely technical/machine-readable (e.g. translating a JSON key, a code comment with no audience), plain literal translation is fine and this skill\u0027s register guidance doesn\u0027t apply.",
         "root":  "skills"
     },
     {
@@ -419,7 +428,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/backtest-expert/SKILL.md",
-        "description":  "Use this skill to simulate how a trading rule would have performed on historical price data โ€” win rate, average return, max drawdown, profit factor โ€” from a CSV or list of prices the user supplies, no market-data API required. Trigger on \"backtest this strategy\", \"เธ—เธ”เธชเธญเธเธเธฅเธขเธธเธ—เธเนเธขเนเธญเธเธซเธฅเธฑเธ\", \"how would this rule have performed historically\", \"moving average crossover backtest\", \"max drawdown of this strategy\". If the user wants to size a position or apply a risk gate on a trade they\u0027re about to take, use position-sizer/drawdown-circuit-breaker instead โ€” this skill evaluates a rule against the past, not a single upcoming trade.",
+        "description":  "Use this skill to simulate how a trading rule would have performed on historical price data — win rate, average return, max drawdown, profit factor — from a CSV or list of prices the user supplies, no market-data API required. Trigger on \"backtest this strategy\", \"ทดสอบกลยุทธ์ย้อนหลัง\", \"how would this rule have performed historically\", \"moving average crossover backtest\", \"max drawdown of this strategy\". If the user wants to size a position or apply a risk gate on a trade they\u0027re about to take, use position-sizer/drawdown-circuit-breaker instead — this skill evaluates a rule against the past, not a single upcoming trade.",
         "root":  "skills"
     },
     {
@@ -437,7 +446,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/drawdown-circuit-breaker/SKILL.md",
-        "description":  "Use this skill to apply a mechanical drawdown-based risk gate โ€” reduce or halt new position-taking after account equity falls a defined percentage from its peak. Trigger on \"drawdown limit\", \"circuit breaker\", \"stop trading after a losing streak\", \"reduce size after a drawdown\", \"risk gate\". Pairs with [position-sizer](../position-sizer/SKILL.md), which the gate\u0027s size_multiplier is meant to scale.",
+        "description":  "Use this skill to apply a mechanical drawdown-based risk gate — reduce or halt new position-taking after account equity falls a defined percentage from its peak. Trigger on \"drawdown limit\", \"circuit breaker\", \"stop trading after a losing streak\", \"reduce size after a drawdown\", \"risk gate\". Pairs with [position-sizer](../position-sizer/SKILL.md), which the gate\u0027s size_multiplier is meant to scale.",
         "root":  "skills"
     },
     {
@@ -446,7 +455,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/exposure-coach/SKILL.md",
-        "description":  "Use this skill to combine market breadth, uptrend participation, and account drawdown state into one summarized \"how much new risk does today support\" exposure ceiling. Trigger on \"market posture\", \"exposure coach\", \"how much risk should I take today\", \"should I add new positions\". Requires the outputs of [market-breadth-analyzer](../market-breadth-analyzer/SKILL.md), [uptrend-analyzer](../uptrend-analyzer/SKILL.md), and optionally [drawdown-circuit-breaker](../drawdown-circuit-breaker/SKILL.md) โ€” this skill aggregates, it doesn\u0027t compute those inputs itself.",
+        "description":  "Use this skill to combine market breadth, uptrend participation, and account drawdown state into one summarized \"how much new risk does today support\" exposure ceiling. Trigger on \"market posture\", \"exposure coach\", \"how much risk should I take today\", \"should I add new positions\". Requires the outputs of [market-breadth-analyzer](../market-breadth-analyzer/SKILL.md), [uptrend-analyzer](../uptrend-analyzer/SKILL.md), and optionally [drawdown-circuit-breaker](../drawdown-circuit-breaker/SKILL.md) — this skill aggregates, it doesn\u0027t compute those inputs itself.",
         "root":  "skills"
     },
     {
@@ -455,7 +464,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/market-breadth-analyzer/SKILL.md",
-        "description":  "Use this skill to score market breadth (the percentage of a stock universe trading above a moving average) from a plain CSV of tickers/prices/moving averages, with no market-data API required. Trigger on \"market breadth\", \"% of stocks above 200-day MA\", \"breadth score\", \"how many stocks are participating\", \"is this rally broad or narrow\". If the user wants a live number pulled from a real-time data feed rather than a CSV they already have, this skill still applies โ€” just have them export/paste the data first, since this skill doesn\u0027t fetch prices itself.",
+        "description":  "Use this skill to score market breadth (the percentage of a stock universe trading above a moving average) from a plain CSV of tickers/prices/moving averages, with no market-data API required. Trigger on \"market breadth\", \"% of stocks above 200-day MA\", \"breadth score\", \"how many stocks are participating\", \"is this rally broad or narrow\". If the user wants a live number pulled from a real-time data feed rather than a CSV they already have, this skill still applies — just have them export/paste the data first, since this skill doesn\u0027t fetch prices itself.",
         "root":  "skills"
     },
     {
@@ -464,7 +473,7 @@
         "role":  "skill",
         "tier":  "prose",
         "path":  "skills/trading/portfolio-manager/SKILL.md",
-        "description":  "Use this skill for a periodic (weekly/monthly) review checklist of a long-term core portfolio โ€” concentration limits, rebalance triggers, and dividend/ETF-specific checks. Trigger on \"portfolio review\", \"rebalance\", \"concentration check\", \"core portfolio\", \"weekly portfolio review\". This skill structures a review process; it does not fetch live prices or execute trades.",
+        "description":  "Use this skill for a periodic (weekly/monthly) review checklist of a long-term core portfolio — concentration limits, rebalance triggers, and dividend/ETF-specific checks. Trigger on \"portfolio review\", \"rebalance\", \"concentration check\", \"core portfolio\", \"weekly portfolio review\". This skill structures a review process; it does not fetch live prices or execute trades.",
         "root":  "skills"
     },
     {
@@ -473,7 +482,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/position-sizer/SKILL.md",
-        "description":  "Use this skill to calculate a risk-based position size (how many shares to buy) from an account size, risk tolerance, entry price, and stop distance. Trigger on \"how many shares should I buy\", \"position size\", \"risk per trade\", \"ATR-based stop\", \"Kelly criterion\", \"risk 1% of account\". If the user hasn\u0027t given a stop-loss level or risk percentage, ask for those before calculating โ€” sizing without a defined risk per trade isn\u0027t really position sizing.",
+        "description":  "Use this skill to calculate a risk-based position size (how many shares to buy) from an account size, risk tolerance, entry price, and stop distance. Trigger on \"how many shares should I buy\", \"position size\", \"risk per trade\", \"ATR-based stop\", \"Kelly criterion\", \"risk 1% of account\". If the user hasn\u0027t given a stop-loss level or risk percentage, ask for those before calculating — sizing without a defined risk per trade isn\u0027t really position sizing.",
         "root":  "skills"
     },
     {
@@ -482,7 +491,7 @@
         "role":  "skill",
         "tier":  "validator",
         "path":  "skills/trading/trader-memory-core/SKILL.md",
-        "description":  "Use this skill to log closed trades in a structured journal and compute win rate, average R-multiple, and expectancy from the trade history. Trigger on \"trade journal\", \"log this trade\", \"win rate\", \"R-multiple\", \"expectancy\", \"trading stats\". If the user just wants to record a trade with no analysis yet, this skill still applies โ€” logging in the right schema now is what makes later stats possible.",
+        "description":  "Use this skill to log closed trades in a structured journal and compute win rate, average R-multiple, and expectancy from the trade history. Trigger on \"trade journal\", \"log this trade\", \"win rate\", \"R-multiple\", \"expectancy\", \"trading stats\". If the user just wants to record a trade with no analysis yet, this skill still applies — logging in the right schema now is what makes later stats possible.",
         "root":  "skills"
     },
     {
@@ -491,7 +500,7 @@
         "role":  "category-index",
         "tier":  "prose",
         "path":  "skills/trading/SKILL.md",
-        "description":  "Route and manage trading/investing workflow skills โ€” market breadth and uptrend participation scoring, exposure/posture synthesis, risk-based position sizing, drawdown circuit breaker, periodic portfolio review, dividend/value screening, and trade journaling. Use when the user asks for market-regime checks, position sizing, risk gates, portfolio review, or trade journaling/stats.",
+        "description":  "Route and manage trading/investing workflow skills — market breadth and uptrend participation scoring, exposure/posture synthesis, risk-based position sizing, drawdown circuit breaker, periodic portfolio review, dividend/value screening, and trade journaling. Use when the user asks for market-regime checks, position sizing, risk gates, portfolio review, or trade journaling/stats.",
         "root":  "skills"
     },
     {
