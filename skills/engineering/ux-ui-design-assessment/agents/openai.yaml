@@ -1,0 +1,7 @@
+interface:
+  display_name: "UX/UI Design Assessment"
+  short_description: "Audit existing UI or design UX/UI for a new project"
+  default_prompt: "Use $ux-ui-design-assessment to audit an existing project's UX/UI into a report, or to design UX/UI for a new project into a design document."
+
+policy:
+  allow_implicit_invocation: true
