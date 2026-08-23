@@ -4,6 +4,11 @@ import shutil
 import argparse
 from pathlib import Path
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
 # ตำแหน่ง Home Directory ของผู้ใช้งานระบบ
 HOME = Path.home()
 

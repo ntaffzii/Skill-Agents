@@ -13,4 +13,5 @@ mcp-tools/
 # Regenerate with /graphify <path> instead of committing it.
 graphify-out/
 **/graphify-out/
+.zcode/
 

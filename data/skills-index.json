@@ -306,6 +306,15 @@
         "root":  "skills"
     },
     {
+        "id":  "seo-website-evaluator",
+        "category":  "seo-website-evaluator",
+        "role":  "category-index",
+        "tier":  "prose",
+        "path":  "skills/seo-website-evaluator/SKILL.md",
+        "description":  "ใช้สกิลนี้เมื่อผู้ใช้ขอให้ \"ตรวจ SEO\", \"ประเมิน SEO\", \"วิเคราะห์เว็บไซต์\", \"SEO audit\", \"SEO score\", \"ให้คะแนนเว็บไซต์\", \"ตรวจเว็บ\", \"ทำไมเว็บไม่ติดหน้าแรก\", \"ช่วยดูเว็บให้หน่อยว่ามีปัญหาอะไร\", \"ประเมินอันดับเว็บ\", \"GEO audit\", \"AI Search optimization\", \"audit website SEO\", \"evaluate website ranking\" หรือส่ง URL เว็บไซต์มาเพื่อขอคำแนะนำด้าน Search Engine Optimization และ AI Search Readiness ผลลัพธ์คือรายงานคะแนนถ่วงน้ำหนัก 0-10 ใน 6 หมวด พร้อมระบุ Critical Red Flags และแผนปฏิบัติการปรับปรุงเรียงตามลำดับความสำคัญ (Quick wins, Medium effort, Long-term)",
+        "root":  "skills"
+    },
+    {
         "id":  "thai",
         "category":  "thai",
         "role":  "category-index",
