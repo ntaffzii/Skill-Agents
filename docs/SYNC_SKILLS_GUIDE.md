@@ -11,6 +11,10 @@
 | **Antigravity IDE** | `~/.gemini/config/skills/<ชื่อสกิล>/` |
 | **Claude Code (CLI)** | `~/.claude/skills/<ชื่อสกิล>/` |
 | **OpenCode Interpreter** | `~/.opencode/skills/<ชื่อสกิล>/` |
+| **Qwen Code** | `~/.qwen/skills/<ชื่อสกิล>/` |
+| **ZCode** | `~/.zcode/skills/<ชื่อสกิล>/` |
+| **Codex CLI** | `~/.codex/skills/<ชื่อสกิล>/` |
+| **LM Studio** | `~/.lmstudio/skills/<ชื่อสกิล>/` |
 
 > **หมายเหตุ:** `~` หมายถึง `C:\Users\<ชื่อผู้ใช้ของคุณ>` บน Windows
 
@@ -59,6 +63,10 @@ skill-agents/
    [1] Antigravity IDE  (~/.gemini/config/skills)
    [2] Claude Code      (~/.claude/skills)
    [3] OpenCode         (~/.opencode/skills)
+   [4] Qwen Code        (~/.qwen/skills)
+   [5] ZCode            (~/.zcode/skills)
+   [6] Codex CLI        (~/.codex/skills)
+   [7] LM Studio        (~/.lmstudio/skills)
 
 👉 กรุณาเลือก Provider (หรือกด Enter เพื่อเลือกทุกตัว):
 ```
@@ -91,7 +99,7 @@ skill-agents/
 .\sync <ชื่อสกิล> <ชื่อ provider>
 ```
 
-**ชื่อ Provider ที่รองรับ:** `antigravity`, `claude`, `opencode`
+**ชื่อ Provider ที่รองรับ:** `antigravity`, `claude`, `opencode`, `qwen`, `zcode`, `codex`, `lmstudio`
 
 **ตัวอย่าง:**
 

@@ -17,6 +17,10 @@ PROVIDERS_MAP = {
     "1": ("Antigravity IDE", HOME / ".gemini" / "config" / "skills"),
     "2": ("Claude Code", HOME / ".claude" / "skills"),
     "3": ("OpenCode Interpreter", HOME / ".opencode" / "skills"),
+    "4": ("Qwen Code", HOME / ".qwen" / "skills"),
+    "5": ("ZCode", HOME / ".zcode" / "skills"),
+    "6": ("Codex CLI", HOME / ".codex" / "skills"),
+    "7": ("LM Studio", HOME / ".lmstudio" / "skills"),
 }
 
 # Alias mapping สำหรับคำสั่ง CLI เช่น --provider antigravity
@@ -25,6 +29,10 @@ PROVIDER_ALIASES = {
     "gemini": "1",
     "claude": "2",
     "opencode": "3",
+    "qwen": "4",
+    "zcode": "5",
+    "codex": "6",
+    "lmstudio": "7",
     "all": "all",
 }
 
@@ -132,6 +140,10 @@ def main():
     print("   [1] Antigravity IDE  (~/.gemini/config/skills)")
     print("   [2] Claude Code      (~/.claude/skills)")
     print("   [3] OpenCode         (~/.opencode/skills)")
+    print("   [4] Qwen Code        (~/.qwen/skills)")
+    print("   [5] ZCode            (~/.zcode/skills)")
+    print("   [6] Codex CLI        (~/.codex/skills)")
+    print("   [7] LM Studio        (~/.lmstudio/skills)")
 
     provider_choice = input("\n👉 กรุณาเลือก Provider (หรือกด Enter เพื่อเลือกทุกตัว): ").strip().lower()
 
