@@ -1,2 +1,3 @@
 @echo off
-python "%~dp0scripts\sync_skills.py" %*
+powershell.exe -ExecutionPolicy Bypass -File scripts\deploy_global.ps1
+pause
