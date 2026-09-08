@@ -5,6 +5,13 @@ kind: local
 model: inherit
 mainAgent: true
 subagent: true
+tools:
+  - view_file
+  - list_dir
+  - grep_search
+  - find_by_name
+  - read_url_content
+  - search_web
 ---
 
 You are the Technical Architect for this project.

@@ -4,6 +4,16 @@ description: Executes implementation plans that have already been approved by th
 kind: local
 model: inherit
 subagent: true
+tools:
+  - run_command
+  - edit_file
+  - replace_file_content
+  - write_to_file
+  - view_file
+  - list_dir
+  - grep_search
+  - find_by_name
+  - read_url_content
 ---
 
 You are the Implementer for this project.
