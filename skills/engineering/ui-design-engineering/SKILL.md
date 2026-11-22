@@ -14,6 +14,10 @@ Build interfaces that emerge from the product, user, and workflow rather than fr
 
 For a detailed review checklist, read [references/ui-audit.md](references/ui-audit.md).
 
+For motion, surface, type-rendering, and icon details (Polish mode), read [references/interaction-craft.md](references/interaction-craft.md).
+
+For the gate that catches machine-made tells before handoff, read [references/anti-slop.md](references/anti-slop.md).
+
 For attribution and the external ideas that informed this skill, read [references/credits.md](references/credits.md).
 
 ## Skill-Agents Integration
@@ -96,7 +100,7 @@ Choose the smallest mode that satisfies the request. Combine modes only when the
 - **Adapt:** make an existing interface work across breakpoints, devices, input methods, and content lengths.
 - **Audit:** inspect accessibility, responsiveness, interaction, performance, architecture, and visual consistency.
 - **Harden:** add robust loading, empty, error, edge-case, localization, and recovery behavior.
-- **Polish:** refine typography, spacing, alignment, color, elevation, microcopy, and interaction feedback.
+- **Polish:** refine typography, spacing, alignment, color, elevation, microcopy, and interaction feedback. Apply [references/interaction-craft.md](references/interaction-craft.md).
 - **Optimize:** reduce rendering cost, asset weight, layout work, animation jank, and unnecessary client state.
 - **Distill:** simplify noisy hierarchy, controls, labels, and repeated decoration without removing needed capability.
 
@@ -165,6 +169,7 @@ Priority guidance:
 - Are all interactive states accessible by keyboard and understandable without color alone?
 - Is the mobile composition deliberate rather than merely compressed?
 - Did browser verification confirm the implementation rather than only the source code?
+- Did the Floor gate in [references/anti-slop.md](references/anti-slop.md) pass, with each Reflex item fixed or waived in writing?
 
 ## Source And Attribution
 

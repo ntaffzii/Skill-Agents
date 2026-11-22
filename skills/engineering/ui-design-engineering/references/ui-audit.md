@@ -84,7 +84,12 @@ Use this reference for frontend review or final implementation QA.
 - Do not migrate component libraries unless requested or necessary to fix the behavior.
 - Distinguish verified defects from subjective alternatives.
 
-## 10. System Verification
+## 10. Craft And Anti-Slop
+
+- Run the Floor and Reflex gates in [anti-slop.md](anti-slop.md) for the matching surface type (marketing or product).
+- Motion, surface, type-rendering, and icon details follow [interaction-craft.md](interaction-craft.md); do not duplicate those rules here.
+
+## 11. System Verification
 
 - `skill-runtime` selected `ui-design-engineering` for the task.
 - The chosen toolset is `frontend-ui` or `design-frontend` as appropriate.

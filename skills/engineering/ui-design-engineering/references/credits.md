@@ -26,6 +26,17 @@ The directory review also informed these areas:
 - `wcag-audit-patterns` by wshobson: structured accessibility auditing.
 - Framework-specific skills from Antfu, Svelte, Vue, Remix, Vercel, Three.js, Shadcn, and others: detect the project's framework and preserve its conventions instead of imposing one universal stack.
 
+## Added 2026-11-22: Interaction Craft And Anti-Slop
+
+`interaction-craft.md` and `anti-slop.md` were written fresh in this repository after reading the public skills below. No text or code was copied; the examples, tables, and wording are original. Upstream files change often, so these notes record what was read on that date.
+
+- [make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better) by Jakub Krehel (MIT) informed the surface, type-rendering, icon, and interruptible-transition guidance, and the "replay at 10% speed" review technique.
+- [Emil Kowalski's skills](https://github.com/emilkowalski/skills) (MIT; `emil-design-eng`, `review-animations`, `animation-performance`) informed the animate-or-not frequency decision, easing and duration budgets, transform-origin and starting-scale rules, hover gating, and the "name the cause before fixing" rule for motion performance.
+- [Hallmark](https://github.com/Nutlope/hallmark) by Nutlope / Together AI (MIT) informed the Floor / Reflex / Finish gate tiers, the idea of linting rendered output in a real browser, and the fresh-context reviewer. Its themes, scripts, and lint tooling were not adopted. Several of its absolute rules are treated here as surface-dependent Reflex items.
+- [Uizze anti-ui-slop](https://github.com/uizze/uizze) was reviewed but contributed no content: it is a derivative of Impeccable plus an optional paid reference service.
+
+Not adopted: Vercel web-design-guidelines (no license declared in the repository), Stageshow (out of scope), UI UX Pro Max (already covered by `ux-ui-design-assessment`).
+
 ## Adaptation For Skill-Agents
 
 The following are specific to this repository and are not claims about upstream skills:

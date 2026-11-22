@@ -36,6 +36,15 @@
         "root":  "Skill.md"
     },
     {
+        "id":  "deep-planning",
+        "category":  "deep-planning",
+        "role":  "category-index",
+        "tier":  "prose",
+        "path":  "skills/deep-planning/SKILL.md",
+        "description":  "Use this skill for any non-trivial coding task — new features, multi-file changes, architecture decisions, bug fixes with unclear root cause, or any request where the \"obvious\" first solution might not be the best one. Do NOT use for mechanical tasks (typo fixes, formatting, adding a single import, renaming a variable) — those should stay in Fast Mode.",
+        "root":  "skills"
+    },
+    {
         "id":  "deprecated",
         "category":  "deprecated",
         "role":  "category-index",
@@ -69,6 +78,15 @@
         "tier":  "prose",
         "path":  "skills/engineering/diagnose/SKILL.md",
         "description":  "Disciplined diagnosis loop for bugs, failing tests, crashes, incorrect behavior, and performance regressions. Use when the user asks to debug, investigate, diagnose, find root cause, or provides an error log, stack trace, flaky behavior, or regression.",
+        "root":  "skills"
+    },
+    {
+        "id":  "engineering",
+        "category":  "engineering",
+        "role":  "category-index",
+        "tier":  "prose",
+        "path":  "skills/engineering/SKILL.md",
+        "description":  "Route to the right engineering skill in skills/engineering/ — architecture review, code review, bug diagnosis, test-driven development, UI design engineering (build, polish, anti-slop review), and UX/UI assessment. Use when the user asks to review code, debug, find a root cause, write tests first, improve architecture, build or polish a user interface, or evaluate a product\u0027s UX/UI.",
         "root":  "skills"
     },
     {
