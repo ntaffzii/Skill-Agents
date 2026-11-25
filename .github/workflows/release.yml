@@ -1,0 +1,58 @@
+name: Release Desktop App
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install GUI and build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ".[gui,build]"
+
+      - name: Verify Python syntax and headless smoke check
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          python -m py_compile scripts/sync_skills.py scripts/sync_gui.py scripts/setup_antigravity_agents.py
+          python scripts/sync_skills.py all --dry-run
+          python -c "import sys; sys.path.insert(0, 'scripts'); from PySide6.QtWidgets import QApplication; import sync_gui; app = QApplication([]); w = sync_gui.SkillSyncWindow(); assert len(w._skills) > 0; w.close()"
+
+      - name: Build Windows executable and release zip
+        shell: pwsh
+        run: |
+          .\scripts\build_release.ps1 -Python python
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          body: |
+            ## Skill-Agents Sync (Windows Desktop App)
+
+            ดาวน์โหลด `SkillAgentsSync.exe` หรือ `SkillAgentsSync-windows-x64.zip` แล้วดับเบิลคลิกใช้งานได้ทันทีโดยไม่ต้องติดตั้ง Python หรือ `git clone`
+
+            - ตัวแอปจะดึงรายการ `skills/` ล่าสุดจาก GitHub (`main`) ให้อัตโนมัติ (ต้องเชื่อมต่ออินเทอร์เน็ต)
+            - หาก Windows แสดงแจ้งเตือน SmartScreen (เนื่องจากยังไม่มี Code Signing Certificate) ให้กด **More info -> Run anyway**
+            - สามารถตรวจสอบความถูกต้องของไฟล์ด้วย `SHA256SUMS.txt`
+          files: |
+            dist/release/SkillAgentsSync.exe
+            dist/release/SkillAgentsSync-windows-x64.zip
+            dist/release/SHA256SUMS.txt

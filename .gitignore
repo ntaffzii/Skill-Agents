@@ -14,4 +14,9 @@ mcp-tools/
 graphify-out/
 **/graphify-out/
 .zcode/
+build/
+dist/release/
+*.egg-info/
+
+
 

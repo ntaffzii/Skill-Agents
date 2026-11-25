@@ -1,10 +1,23 @@
 [project]
 name = "skill-agents"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.0.0"
+description = "Personal AI-agent skills, workflows, and cross-provider sync tools"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastmcp>=3.4.3",
     "mcp>=1.28.1",
 ]
+
+[project.optional-dependencies]
+gui = [
+    "PySide6-Essentials>=6.7",
+    "certifi>=2024.8",
+]
+build = [
+    "pyinstaller>=6.10",
+    "certifi>=2024.8",
+]
+
+[tool.setuptools]
+py-modules = []

@@ -47,9 +47,11 @@ if ($Clean -and (Test-Path -LiteralPath $OutputRoot)) {
 New-Item -ItemType Directory -Force -Path $SkillRepo, $ToolsRepo | Out-Null
 
 $SkillItems = @(
+    ".agents",
     ".gitignore",
     ".env.example",
     ".github",
+    "AGENTS.md",
     "CONTRIBUTING.md",
     "LICENSE",
     "NOTICE.md",
@@ -61,8 +63,12 @@ $SkillItems = @(
     "data",
     "docs",
     "examples",
+    "pyproject.toml",
     "scripts",
     "skills",
+    "sync.bat",
+    "sync.ps1",
+    "sync.sh",
     "user-run-scripts",
     "workflows"
 )

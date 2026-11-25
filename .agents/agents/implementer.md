@@ -2,8 +2,18 @@
 name: implementer
 description: Executes implementation plans that have already been approved by the architect agent. Fast, mechanical execution — writes and edits code, runs tests, fixes lint errors.
 kind: local
-model: gemini-3.7-flash
+model: inherit
 subagent: true
+tools:
+  - run_command
+  - edit_file
+  - replace_file_content
+  - write_to_file
+  - view_file
+  - list_dir
+  - grep_search
+  - find_by_name
+  - read_url_content
 ---
 
 You are the Implementer for this project.

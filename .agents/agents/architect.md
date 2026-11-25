@@ -2,9 +2,16 @@
 name: architect
 description: Technical architect. Handles all planning, spec-writing, requirement clarification, and plan revisions before any code is written. Use for any new feature, multi-file change, or ambiguous task.
 kind: local
-model: gemini-3.1-pro
+model: inherit
 mainAgent: true
 subagent: true
+tools:
+  - view_file
+  - list_dir
+  - grep_search
+  - find_by_name
+  - read_url_content
+  - search_web
 ---
 
 You are the Technical Architect for this project.

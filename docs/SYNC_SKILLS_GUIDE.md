@@ -1,6 +1,6 @@
-# SYNC_SKILLS — คู่มือการใช้คำสั่งซิงค์สกิลไปยัง AI Providers
+# SYNC_SKILLS — คู่มือการใช้คำสั่งซิงค์สกิลและหน้าจอ GUI
 
-คู่มือนี้อธิบายการใช้งาน `sync_skills.py` และคำสั่ง `.\sync` สำหรับคัดลอกสกิลจากคลัง `skills/` ในโปรเจกต์นี้ไปยัง AI Providers ต่างๆ บนเครื่องของคุณโดยอัตโนมัติ
+คู่มือนี้อธิบายการใช้งาน `sync_skills.py`, คำสั่งทางลัด (`.\sync`, `./sync.sh`), หน้าจอ GUI (`PySide6`), และการดาวน์โหลดจาก **GitHub Releases** ไปใช้บนเครื่องอื่นโดยไม่ต้องติดตั้ง Python
 
 ---
 
@@ -16,7 +16,7 @@
 | **Codex CLI** | `~/.codex/skills/<ชื่อสกิล>/` |
 | **LM Studio** | `~/.lmstudio/skills/<ชื่อสกิล>/` |
 
-> **หมายเหตุ:** `~` หมายถึง `C:\Users\<ชื่อผู้ใช้ของคุณ>` บน Windows
+> **โหมด Full Setup:** นอกจากสกิลแล้ว ยังซิงค์ `.agents/agents/*.md` ไปที่ `~/.gemini/config/agents/`, `AGENTS.md` ไปที่ `~/.gemini/config/rules/global_agents.md`, และสร้าง `dist/global_cursorrules.md` (เมื่อรันในโฟลเดอร์ repo)
 
 ---
 
@@ -24,159 +24,90 @@
 
 ```text
 skill-agents/
-├── sync.bat              ← ทางลัดสำหรับ Windows Command Prompt
-├── sync.ps1              ← ทางลัดสำหรับ PowerShell
+├── sync.bat                  ← ทางลัด Windows CMD (ตรวจหา Python อัตโนมัติ)
+├── sync.ps1                  ← ทางลัด PowerShell (ตรวจหา Python อัตโนมัติ)
+├── sync.sh                   ← ทางลัด macOS / Linux
 └── scripts/
-    └── sync_skills.py    ← สคริปต์หลักที่ทำงานจริง
+    ├── sync_skills.py        ← แกนหลัก CLI & Sync Engine (stdlib ล้วน)
+    ├── sync_gui.py           ← หน้าจอ Desktop UX & UI (PySide6)
+    └── build_release.ps1     ← สคริปต์ build ไฟล์ .exe / .zip สำหรับ Release
 ```
 
 ---
 
 ## วิธีใช้งาน
 
-### 1. แบบ Interactive (เมนูโต้ตอบ) — แนะนำสำหรับผู้เริ่มต้น ⭐
+### 1. ดาวน์โหลดจาก GitHub Releases (สำหรับเครื่องอื่นที่ไม่มี Python / ไม่ได้ Clone)
 
-เปิด Terminal แล้วพิมพ์:
+1. ไปที่หน้า **Releases** ของ GitHub repo แล้วดาวน์โหลด `SkillAgentsSync.exe` หรือ `SkillAgentsSync-windows-x64.zip`
+2. ดับเบิลคลิกเปิดโปรแกรม — ตัวแอปจะดึงรายการ `skills/` ล่าสุดจาก GitHub ให้อัตโนมัติ และตรวจจับ AI Apps ที่มีอยู่ในเครื่องให้ก่อน
+3. กดเลือก/ค้นหา Skills และ Providers ที่ต้องการ แล้วกดปุ่ม **ติดตั้ง** (มีปุ่ม **จำลองผล (Dry Run)** และปุ่ม **เปิดโฟลเดอร์ปลายทาง** หลังติดตั้งเสร็จ)
+
+---
+
+### 2. เปิดหน้าจอ GUI จากใน Repo (`.\sync ui`)
+
+ต้องติดตั้ง optional dependency `[gui]` ครั้งแรกก่อน:
 
 ```powershell
-.\sync
+uv pip install --python .\.venv\Scripts\python.exe ".[gui]"
+.\sync ui
 ```
 
-ระบบจะแสดงเมนู **2 ขั้นตอน** ให้เลือกแบบโต้ตอบ:
+หรือดึงข้อมูลสดจาก GitHub แทนไฟล์ในเครื่อง:
 
-```text
-=======================================================
- 🛠️  โปรแกรมซิงค์ Skill ไปยัง AI Providers (Interactive)
-=======================================================
-
-📌 [ขั้นตอนที่ 1/2] เลือก Skill ที่ต้องการส่ง:
-   [1] thai
-   [2] trading
-   [3] engineering
-   ...
-   [A] เลือกทุก Skill ทั้งหมด (10 สกิล)
-
-👉 กรุณาเลือกหมายเลข Skill (หรือกด Enter เพื่อเลือกทั้งหมด):
-
-📌 [ขั้นตอนที่ 2/2] เลือก AI Provider ปลายทาง:
-   [A] ส่งไปยังทุก Provider ทั้งหมด (Recommended)
-   [1] Antigravity IDE  (~/.gemini/config/skills)
-   [2] Claude Code      (~/.claude/skills)
-   [3] OpenCode         (~/.opencode/skills)
-   [4] Qwen Code        (~/.qwen/skills)
-   [5] ZCode            (~/.zcode/skills)
-   [6] Codex CLI        (~/.codex/skills)
-   [7] LM Studio        (~/.lmstudio/skills)
-
-👉 กรุณาเลือก Provider (หรือกด Enter เพื่อเลือกทุกตัว):
+```powershell
+.\sync ui --from-github
 ```
 
 ---
 
-### 2. แบบระบุชื่อสกิล One-liner (เร็วที่สุด)
-
-ส่งสกิลชื่อที่ต้องการไปยังทุก Provider พร้อมกันทันที:
+### 3. คำสั่ง CLI แบบสั้น (One-word Shortcuts)
 
 ```powershell
-.\sync <ชื่อสกิล>
-```
+# ซิงค์ทุก Skill ไปยังทุก Provider (โหมด Skills เท่านั้น — ปลอดภัย)
+.\sync all
 
-**ตัวอย่าง:**
+# ซิงค์ครบชุด: Skills + Antigravity Agents/Rules + dist/global_cursorrules.md
+.\sync full
 
-```powershell
-.\sync thai
-.\sync trading
-.\sync engineering
-```
-
----
-
-### 3. แบบระบุทั้งสกิลและ Provider
-
-ส่งสกิลที่ต้องการไปยัง Provider ที่เจาะจง:
-
-```powershell
-.\sync <ชื่อสกิล> <ชื่อ provider>
-```
-
-**ชื่อ Provider ที่รองรับ:** `antigravity`, `claude`, `opencode`, `qwen`, `zcode`, `codex`, `lmstudio`
-
-**ตัวอย่าง:**
-
-```powershell
-# ส่งสกิล thai ไปแค่ Antigravity IDE เท่านั้น
+# ซิงค์เฉพาะสกิลและระบุ Provider (รองรับหลายตัวคั่นด้วย comma)
 .\sync thai antigravity
+.\sync trading -p antigravity,claude
 
-# ส่งสกิล trading ไปแค่ Claude Code เท่านั้น
-.\sync trading claude
+# จำลองผลโดยไม่เขียนไฟล์จริง
+.\sync all --dry-run
 
-# ส่งสกิล engineering ไปแค่ OpenCode เท่านั้น
-.\sync engineering opencode
+# ดึงไฟล์ล่าสุดจาก GitHub โดยตรง (ใช้ได้แม้ไม่ได้รันจากโฟลเดอร์ repo)
+python scripts/sync_skills.py all --from-github
+```
+
+บน macOS / Linux:
+
+```bash
+chmod +x sync.sh
+./sync.sh all
+./sync.sh ui
 ```
 
 ---
 
-### 4. แบบ Python CLI โดยตรง
+### 4. เมนู Interactive (3 ขั้นตอน)
 
-สำหรับผู้ที่ต้องการควบคุมเต็มรูปแบบผ่านคำสั่ง Python:
+เปิด Terminal แล้วพิมพ์ `.\sync` (หรือดับเบิลคลิก `sync.bat`):
 
-```powershell
-# Interactive menu
-python scripts/sync_skills.py
-
-# ระบุสกิล
-python scripts/sync_skills.py thai
-
-# ระบุสกิล + Provider
-python scripts/sync_skills.py thai -p antigravity
-python scripts/sync_skills.py trading -p claude
-```
+1. เลือกโหมด: `[1] เฉพาะ Skills` (แนะนำ) หรือ `[2] ครบชุด Full Setup`
+2. เลือก Skill: กด Enter เพื่อเลือกทั้งหมด หรือพิมพ์หมายเลขคั่นด้วย comma (เช่น `1,3`)
+3. เลือก AI Provider: ระบบจะแสดงสถานะ `พบในเครื่อง` / `จะสร้างใหม่` ให้เห็นชัดเจน
 
 ---
 
-## ตัวอย่างผลลัพธ์เมื่อทำงานสำเร็จ
+## การ Build และออก GitHub Release
 
-```text
-🚀 กำลังส่งโฟลเดอร์ Skill: [thai] ...
-  ✅ [สำเร็จ] Antigravity IDE        -> C:\Users\natth\.gemini\config\skills\thai
-  ✅ [สำเร็จ] Claude Code            -> C:\Users\natth\.claude\skills\thai
-  ✅ [สำเร็จ] OpenCode Interpreter   -> C:\Users\natth\.opencode\skills\thai
-🎉 ดำเนินการเรียบร้อยแล้ว!
-```
-
----
-
-## คำถามที่พบบ่อย (FAQ)
-
-### Q: ถ้ารันซ้ำจะเกิดอะไรขึ้น?
-
-A: สคริปต์จะ**ลบโฟลเดอร์สกิลเก่าออกแล้วคัดลอกใหม่ทั้งหมด** ทุกครั้งที่รัน — ใช้ได้อย่างปลอดภัย ไม่มีการซ้อนทับหรือข้อมูลค้างเก่า
-
-### Q: ถ้า Provider ยังไม่ได้ติดตั้ง จะเกิดอะไรขึ้น?
-
-A: สคริปต์จะ**สร้างโฟลเดอร์ให้อัตโนมัติ** แม้ว่า Provider นั้นจะยังไม่ได้ติดตั้งในเครื่อง — ไม่มี Error
-
-### Q: สกิลที่อยู่ในโฟลเดอร์ `skills/` แต่ไม่มี `SKILL.md` จะถูกซิงค์ไหม?
-
-A: สคริปต์คัดลอกทั้งโฟลเดอร์ ไม่ว่าจะมี `SKILL.md` หรือไม่ — แต่ AI Provider ส่วนใหญ่จะ**ตรวจพบเฉพาะโฟลเดอร์ที่มี `SKILL.md` และ YAML Frontmatter ครบถ้วน** เท่านั้น
-
-### Q: ต้องการเพิ่ม Provider ใหม่ได้ไหม?
-
-A: ได้ครับ — แก้ไข `PROVIDERS_MAP` ในไฟล์ `scripts/sync_skills.py` โดยเพิ่ม entry ใหม่:
-
-```python
-PROVIDERS_MAP = {
-    ...
-    "4": ("Cursor AI", HOME / ".cursor" / "rules"),  # เพิ่ม Provider ใหม่
-}
-```
-
----
-
-## ไฟล์ที่เกี่ยวข้องในโปรเจกต์
-
-| ไฟล์ | คำอธิบาย |
-| :-- | :-- |
-| [sync.bat](../sync.bat) | ทางลัดรันบน Windows CMD |
-| [sync.ps1](../sync.ps1) | ทางลัดรันบน PowerShell |
-| [scripts/sync_skills.py](../scripts/sync_skills.py) | สคริปต์หลัก Python |
+- **Build ในเครื่อง Windows:**
+  ```powershell
+  uv pip install --python .\.venv\Scripts\python.exe ".[gui,build]"
+  .\scripts\build_release.ps1
+  ```
+  ผลลัพธ์จะอยู่ที่ `dist/release/SkillAgentsSync.exe`, `SkillAgentsSync-windows-x64.zip`, และ `SHA256SUMS.txt`
+- **ปล่อย Release อัตโนมัติบน GitHub:** สร้างและ push tag ที่ขึ้นต้นด้วย `v` (เช่น `git tag v1.0.0 && git push origin v1.0.0`) เพื่อให้ GitHub Actions (`.github/workflows/release.yml`) build และเผยแพร่บนหน้า Releases ให้อัตโนมัติ

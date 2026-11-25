@@ -155,9 +155,13 @@ AI จะตรวจสอบกับ `AGENTS.md` และสลับเป�
 
 ### รูปแบบที่ 3: ใช้งานใน AI เครื่องมืออื่น (Cursor, OpenCode, Claude Code)
 - **Cursor / OpenCode:** ใช้เนื้อหาจาก `dist/global_cursorrules.md` ไปวางใน `.cursorrules` หรือ System Prompt
-- **Sync ไปยัง Provider อื่น:** รันคำสั่ง `.\sync.ps1` หรือ:
+- **Sync ไปยัง Provider อื่น:** รันคำสั่ง `.\sync` หรือใช้หน้าจอ GUI (`.\sync ui`):
   ```powershell
-  python scripts\sync_skills.py deep-planning -p all
+  # ซิงค์เฉพาะ deep-planning ไปทุก Provider
+  .\sync deep-planning all
+
+  # ซิงค์ครบชุด (Skills + Custom Agents + Global Rules + dist/global_cursorrules.md)
+  .\sync full
   ```
 
 ---
@@ -165,5 +169,5 @@ AI จะตรวจสอบกับ `AGENTS.md` และสลับเป�
 ## 5. การดูแลและอัปเดต (Maintenance)
 
 1. **แก้ไขที่ Repo นี้เสมอ:** ปรับปรุงเนื้อหาใน `.agents/` หรือ `skills/` ของโปรเจกต์นี้
-2. **รันการ Deploy:** รัน `.\sync.bat` เพื่อให้สคริปต์ก๊อปปี้ไปที่ `~/.gemini/config/` และสร้างไฟล์ `dist/global_cursorrules.md` ให้อัตโนมัติ
+2. **รันการ Deploy:** รัน `.\sync full` (หรือ `.\sync ui` แล้วเลือกโหมด Full Setup) เพื่อให้สคริปต์ก๊อปปี้ไปที่ `~/.gemini/config/` และสร้างไฟล์ `dist/global_cursorrules.md` ให้อัตโนมัติ
 3. **Commit ขึ้น Git:** `git add .`, `git commit`, `git push` เพื่อเก็บประวัติใน GitHub
