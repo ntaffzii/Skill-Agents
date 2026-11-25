@@ -30,7 +30,7 @@ jobs:
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
-          python -m py_compile scripts/sync_skills.py scripts/sync_gui.py scripts/setup_antigravity_agents.py
+          python -m py_compile scripts/sync_skills.py scripts/sync_gui.py
           python scripts/sync_skills.py all --dry-run
           python -c "import sys; sys.path.insert(0, 'scripts'); from PySide6.QtWidgets import QApplication; import sync_gui; app = QApplication([]); w = sync_gui.SkillSyncWindow(); assert len(w._skills) > 0; w.close()"
 

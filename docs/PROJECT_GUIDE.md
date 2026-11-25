@@ -51,7 +51,8 @@ Skill-Agents/
     RECOMMENDED_NEXT_TOOLS.md
     WEB_CAPTURE_PROVIDERS.md
     FINANCE_MARKET_PROVIDERS.md
-    USER_RUN_WORKFLOWS.md
+    SYNC_SKILLS_GUIDE.md
+    ANTIGRAVITY_AGENTS_GUIDE.md
   workflows/
     ship-feature.md
     debug-regression.md
@@ -83,7 +84,6 @@ Skill-Agents/
     tests/
     config/tool_policy.json
   scripts/
-  user-run-scripts/
 ```
 
 ## การทำงานของระบบ
@@ -447,25 +447,6 @@ Use review-pr. Inspect git diff, related files, tests, CI, and GitHub metadata. 
 - web-capture ไม่ bypass login, captcha, private account, paywall
 - Git ไม่มี reset hard, force push, merge, rebase
 - command execution ผ่าน policy ใน `mcp-tools/config/tool_policy.json`
-- blocked หรือ risky action ควรสร้าง user-run script ให้ผู้ใช้กดเอง
-
-## User-Run Scripts
-
-อยู่ใน `user-run-scripts/`
-
-ใช้เมื่อ sandbox ทำไม่ได้ หรือควรให้ผู้ใช้กดเอง เช่น:
-
-- install dependencies
-- install Playwright browser
-- split repo ก่อนขึ้น GitHub
-- publish repo
-- run validation
-
-ตัวอย่าง:
-
-```powershell
-.\user-run-scripts\run-validate-all.ps1
-```
 
 ## Validate โปรเจกต์
 
@@ -510,27 +491,7 @@ Skill-Agents/
 
 ### ทางที่ 2: แยก repo
 
-เหมาะกับ publish/share:
-
-```text
-skill-agents/
-  skills/
-  Skill.md/
-  workflows/
-  docs/
-
-ai-desk-mcp-tools/
-  server.py
-  tools/
-  tests/
-  requirements.txt
-```
-
-ใช้ script:
-
-```powershell
-.\user-run-scripts\run-github-split.ps1
-```
+ใช้งานแยก repo บน GitHub (`ntaffzii/Skill-Agents` สำหรับ skills/workflows/docs และ `ntaffzii/ai-desk-tools` สำหรับ MCP server)
 
 ## คำสั่ง Prompt ที่ใช้บ่อย
 
