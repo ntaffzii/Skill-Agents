@@ -14,8 +14,12 @@ Fifty-two visual types. Semantic patterns describe behavior; type references des
 
 > [!NOTE]
 > **Skill-Agents environment notes (Windows & image-first output):**
-> - **Image-first default:** Deliver **`.png`** (2x Retina via `scripts/export_png.py`) when Playwright is available, or **`.svg`** (via `scripts/export_svg.py`) when SVG is requested or Playwright is unavailable. Author and validate the intermediate `.html` in a temporary/scratch folder, and save `.html` beside the deliverable only when the user asks for HTML, editable source, or interactive motion.
-> - **Windows Python:** Wherever commands below show `python3 scripts/...`, run `.\.venv\Scripts\python.exe scripts/...`, `python scripts/...`, or `py -3 scripts/...` on Windows. Seven of the nine scripts (`self_check.py`, `verify_geometry.py`, `export_svg.py`, and the 4 extractors) use Python stdlib only; `export_png.py` and `export_pdf.py` use Playwright (`uv pip install --python .\.venv\Scripts\python.exe ".[diagram]"` + `.\.venv\Scripts\playwright.exe install chromium`).
+> - **Image-first default:** Deliver **`.png`** (2x Retina via `scripts/export_png.py`) when Playwright is available in the active Python interpreter, or **`.svg`** (via `scripts/export_svg.py`, Python stdlib only) when SVG is requested or Playwright is unavailable. Author and validate the intermediate `.html` in a temporary/scratch folder, and save `.html` beside the deliverable only when the user asks for HTML, editable source, or interactive motion.
+> - **Playwright prerequisite for PNG/PDF:** `export_png.py` and `export_pdf.py` require `playwright` + Chromium in the **Python interpreter running the script**:
+>   - **Any project on this machine (global Python):** `pip install playwright` + `playwright install chromium`
+>   - **Inside `Skill-Agents` `.venv`:** `uv pip install --python .\.venv\Scripts\python.exe ".[diagram]"` + `.\.venv\Scripts\playwright.exe install chromium`
+>   - Chromium is cached per user (`%LOCALAPPDATA%\ms-playwright` on Windows / `~/.cache/ms-playwright` on macOS/Linux), so adding `playwright` to another Python interpreter reuses the downloaded browser without re-downloading it. If `playwright` is missing in the active interpreter, automatically fall back to `.svg` (`scripts/export_svg.py`) and inform the user.
+> - **Windows Python:** Wherever commands below show `python3 scripts/...`, run `.\.venv\Scripts\python.exe scripts/...`, `python scripts/...`, or `py -3 scripts/...` on Windows. Seven of the nine scripts (`self_check.py`, `verify_geometry.py`, `export_svg.py`, and the 4 extractors) use Python stdlib only.
 > - **Trimmed `assets/`:** Gallery examples (`assets/example-*.html` and `assets/index.html`) are intentionally omitted to keep cross-provider sync fast. Start from `assets/template*.html` (plus `assets/icons.html`) and follow the matching `references/type-*.md` guide.
 > - **Keeping the repo clean:** Do not edit `references/style-guide.md` inside the `Skill-Agents` git checkout for project-specific branding; sync to a provider first or bind a project `.diagram-design` marker per [`references/profiles.md`](references/profiles.md).
 
@@ -371,8 +375,8 @@ The size preset sets the `viewBox` **and** the type ramp; `faithful` is the only
 Author every diagram first as a single self-contained `.html` file with inline SVG (embedded CSS, Google Fonts `<link>` or `system` mode, no external images, static by default), validate it with `scripts/self_check.py` and `scripts/verify_geometry.py`, and then **deliver an image (`.png` or `.svg`) as the primary output**, keeping `.html` as an optional artifact.
 
 - **Default image output:**
-  - If Playwright is available (or PNG is requested): export **`.png`** via `scripts/export_png.py <scratch.html> <output.png> 2` (2x Retina).
-  - If the user asks for `.svg` (or Playwright is missing): export **`.svg`** via `scripts/export_svg.py <scratch.html> <output.svg>`.
+  - If `playwright` is available in the active Python interpreter (or PNG is requested and `playwright` is installed): export **`.png`** via `scripts/export_png.py <scratch.html> <output.png> 2` (2x Retina).
+  - If the user asks for `.svg`, or `playwright` is missing in the active Python interpreter: fall back automatically to **`.svg`** via `scripts/export_svg.py <scratch.html> <output.svg>` (Python stdlib only — zero external dependencies) and note the fallback if PNG was requested.
   - If the user asks for both PNG and SVG, export both files.
   - Author the intermediate `.html` in a temporary/scratch folder and save `.html` alongside the image **only** when the user explicitly requests HTML, editable source, editorial cards (`template-full`), or interactive motion (`template-motion`).
 

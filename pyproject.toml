@@ -18,6 +18,7 @@ build = [
     "pyinstaller>=6.10",
     "certifi>=2024.8",
 ]
+# Optional extra for diagram-design PNG/PDF export (also run `playwright install chromium` once; SVG export uses stdlib only).
 diagram = [
     "playwright>=1.50",
 ]

@@ -2,6 +2,8 @@
 
 Convert a generated diagram HTML file into a portable `.svg` and/or `.png` next to it. *(In Skill-Agents, `.png` / `.svg` are the default primary deliverables exported automatically after HTML validation, while `.html` is kept only when requested.)*
 
+> **Prerequisites:** `.png` and `.pdf` export require `playwright` + Chromium in the active Python interpreter (for cross-project use: `pip install playwright && playwright install chromium`; in `Skill-Agents` `.venv`: `uv pip install --python .\.venv\Scripts\python.exe ".[diagram]"` + `.\.venv\Scripts\playwright.exe install chromium`). Chromium lives in a shared user cache (`%LOCALAPPDATA%\ms-playwright` / `~/.cache/ms-playwright`), so multiple Python interpreters share the same browser download. `.svg` export (`scripts/export_svg.py`) uses Python stdlib only and serves as the automatic fallback when Playwright is unavailable.
+
 ## Trigger
 
 Load this file when:
