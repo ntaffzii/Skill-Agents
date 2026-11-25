@@ -13,8 +13,9 @@ Create diagrams as self-contained HTML files with inline SVG and an editorial de
 Fifty-two visual types. Semantic patterns describe behavior; type references describe layout.
 
 > [!NOTE]
-> **Skill-Agents environment notes (Windows & trimmed `assets/`):**
-> - **Windows Python:** Wherever commands below show `python3 scripts/...`, run `python scripts/...` or `py -3 scripts/...` on Windows. Seven of the nine scripts (`self_check.py`, `verify_geometry.py`, `export_svg.py`, and the 4 extractors) use Python stdlib only; `export_png.py` and `export_pdf.py` require optional Playwright (`uv pip install --python .\.venv\Scripts\python.exe ".[diagram]"` + `playwright install chromium`).
+> **Skill-Agents environment notes (Windows & image-first output):**
+> - **Image-first default:** Deliver **`.png`** (2x Retina via `scripts/export_png.py`) when Playwright is available, or **`.svg`** (via `scripts/export_svg.py`) when SVG is requested or Playwright is unavailable. Author and validate the intermediate `.html` in a temporary/scratch folder, and save `.html` beside the deliverable only when the user asks for HTML, editable source, or interactive motion.
+> - **Windows Python:** Wherever commands below show `python3 scripts/...`, run `.\.venv\Scripts\python.exe scripts/...`, `python scripts/...`, or `py -3 scripts/...` on Windows. Seven of the nine scripts (`self_check.py`, `verify_geometry.py`, `export_svg.py`, and the 4 extractors) use Python stdlib only; `export_png.py` and `export_pdf.py` use Playwright (`uv pip install --python .\.venv\Scripts\python.exe ".[diagram]"` + `.\.venv\Scripts\playwright.exe install chromium`).
 > - **Trimmed `assets/`:** Gallery examples (`assets/example-*.html` and `assets/index.html`) are intentionally omitted to keep cross-provider sync fast. Start from `assets/template*.html` (plus `assets/icons.html`) and follow the matching `references/type-*.md` guide.
 > - **Keeping the repo clean:** Do not edit `references/style-guide.md` inside the `Skill-Agents` git checkout for project-specific branding; sync to a provider first or bind a project `.diagram-design` marker per [`references/profiles.md`](references/profiles.md).
 
@@ -356,7 +357,7 @@ Set these four import decisions **before** drawing. Full spec: [output-spec.md](
 
 | Dial | Options | Default |
 |---|---|---|
-| **Format** | `html` · `svg` · `png` · `html+png` | `html` |
+| **Format** | `png` · `svg` · `png+svg` · `html` · `html+png` | `png` (fallback `svg` if no Playwright) |
 | **Size** | `doc-inline` · `doc-wide` · `slide-16x9` · `slide-4x3` · `social-og` · `social-square` · `print-a4-landscape` · `print-a3-landscape` · `print-letter-landscape` · `fit` | `doc-inline` |
 | **Detail** | `faithful` (≤24 nodes, zoned) · `balanced` (≤12) · `simplified` (≤7) | `balanced` |
 | **Audience** | `engineer` · `mixed` · `executive` — governs wording, not count | `mixed` |
@@ -367,13 +368,15 @@ The size preset sets the `viewBox` **and** the type ramp; `faithful` is the only
 
 ## 12. Output
 
-Always produce a single self-contained `.html` file:
+Author every diagram first as a single self-contained `.html` file with inline SVG (embedded CSS, Google Fonts `<link>` or `system` mode, no external images, static by default), validate it with `scripts/self_check.py` and `scripts/verify_geometry.py`, and then **deliver an image (`.png` or `.svg`) as the primary output**, keeping `.html` as an optional artifact.
 
-- Embedded CSS (no external except Google Fonts)
-- Inline SVG (no external images)
-- Static by default; minimal inline JavaScript only for explicit animation controls/state
+- **Default image output:**
+  - If Playwright is available (or PNG is requested): export **`.png`** via `scripts/export_png.py <scratch.html> <output.png> 2` (2x Retina).
+  - If the user asks for `.svg` (or Playwright is missing): export **`.svg`** via `scripts/export_svg.py <scratch.html> <output.svg>`.
+  - If the user asks for both PNG and SVG, export both files.
+  - Author the intermediate `.html` in a temporary/scratch folder and save `.html` alongside the image **only** when the user explicitly requests HTML, editable source, editorial cards (`template-full`), or interactive motion (`template-motion`).
 
-Renders correctly in any modern browser. Motion-enabled output must render its complete meaning without JavaScript; under `prefers-reduced-motion: reduce` it shows the complete static frame and hides/disables playback controls.
+Motion-enabled `.html` output must render its complete meaning without JavaScript; under `prefers-reduced-motion: reduce` it shows the complete static frame and hides/disables playback controls.
 
 ### Accessible SVG contract
 
@@ -388,6 +391,6 @@ Every diagram is an accessible figure by default (long form: [primitives-core.md
 
 ### Exporting to PNG / SVG / PDF
 
-When the user asks to export, save, rasterize, or convert a generated diagram to `.png`, `.svg`, or `.pdf`, load [`references/export.md`](references/export.md) and follow the procedure there. Run the packaged helpers `scripts/export_svg.py`, `scripts/export_png.py`, and `scripts/export_pdf.py`; the reference owns their arguments and availability checks. All three formats deliver the diagram only (the `<svg>` node) by default — editorial wrappers like cards and headers are dropped unless `--full-page` is requested for PDF. Export is **manual** — never produce export files unprompted. The scratch preview from the render-and-look step (§10) is not an export: it stays in a temporary folder.
+Follow [`references/export.md`](references/export.md) and run the packaged helpers `scripts/export_svg.py`, `scripts/export_png.py`, and `scripts/export_pdf.py` (which carry all rules, arguments, and availability checks). All three formats deliver the diagram only (the `<svg>` node) by default — editorial wrappers like cards and headers are dropped unless `--full-page` is requested for PDF. Keep the intermediate scratch preview from §10 in a temporary folder unless `.html` was requested.
 
 For an imported diagram, pixel dimensions come from the `viewBox` × scale factor, so its size decision belongs to §11, not to export. For any diagram that needs an exact frame (an OG card or a slide image), see [`export.md` § Sizing the export](references/export.md).
