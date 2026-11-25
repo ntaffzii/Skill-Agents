@@ -18,6 +18,9 @@ build = [
     "pyinstaller>=6.10",
     "certifi>=2024.8",
 ]
+diagram = [
+    "playwright>=1.50",
+]
 
 [tool.setuptools]
 py-modules = []
